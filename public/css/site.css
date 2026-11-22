@@ -358,6 +358,7 @@ main#main { overflow-x: clip; }
 .home-about .prose { max-width: 66ch; font-size: .96rem; line-height: 1.6; }
 .home-about .prose p { margin-bottom: .8rem; }
 .home-about .tick-list.two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: .65rem; }
+.home-about-points { margin-top: .25rem; }
 .home-about .tick-list li { padding: .8rem .8rem .8rem 2.35rem; border: 1px solid var(--line); border-radius: 12px; background: #fff; font-size: .9rem; line-height: 1.4; }
 .home-about .tick-list li::before { left: .75rem; top: .85rem; }
 .home-about .about-actions { gap: .75rem !important; margin-top: 1.1rem !important; }

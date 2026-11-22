@@ -94,7 +94,7 @@
 @if ($about->active())
 <section class="section home-about" id="sec-about">
     <div class="container-wide">
-        <div class="row align-items-center g-4 g-xl-5">
+        <div class="row align-items-start g-4 g-xl-5">
             <div class="col-lg-6 reveal reveal-left">
                 <div class="about-collage">
                     <x-media :src="$about->image" :alt="plain_text($about->heading)" icon="fa-solid fa-industry" class="about-main" />
@@ -107,12 +107,16 @@
             <div class="col-lg-6 reveal reveal-right">
                 <x-section-heading :eyebrow="$about->eyebrow" :heading="$about->heading" />
                 <div class="prose">{{ rich_text($about->text) }}</div>
-                @if ($about->lines('points'))
-                    <ul class="tick-list two-col mt-4">
+            </div>
+            @if ($about->lines('points'))
+                <div class="col-12 home-about-points reveal">
+                    <ul class="tick-list two-col">
                         @foreach ($about->lines('points') as $point)<li>{{ $point }}</li>@endforeach
                     </ul>
-                @endif
-                <div class="d-flex flex-wrap gap-3 mt-4 about-actions">
+                </div>
+            @endif
+            <div class="col-12 reveal">
+                <div class="d-flex flex-wrap gap-3 about-actions">
                     <a href="{{ route('about') }}" class="btn btn-brand">{{ $about->get('button_text', 'More About Us') }}<i class="fa-solid fa-arrow-right ms-2"></i></a>
                     <a href="{{ route('leadership') }}" class="btn btn-link-arrow">Meet our leadership <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
