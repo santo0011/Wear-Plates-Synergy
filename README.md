@@ -15,9 +15,11 @@ Laravel 12 · MySQL · Bootstrap 5 · Font Awesome 6 · Blade components
    copy .env.example .env      # then set ADMIN_EMAIL / ADMIN_PASSWORD
    php artisan key:generate
    php artisan migrate --seed
-   php artisan serve
+   # Open the project through Apache (XAMPP) at http://localhost/ware
    ```
-4. Website: http://127.0.0.1:8000 · Admin: http://127.0.0.1:8000/admin
+4. Website: http://localhost/ware · Admin: http://localhost/ware/admin
+
+The project-root `.htaccess` forwards requests internally to Laravel's `public/` directory, so `/public` does not appear in the URL. Apache's `mod_rewrite` and `.htaccess` overrides must be enabled.
 
 ## Admin account
 
