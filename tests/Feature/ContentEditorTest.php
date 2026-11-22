@@ -150,6 +150,20 @@ class ContentEditorTest extends TestCase
             ->assertSessionHasErrors('content.photo');
     }
 
+    public function test_header_logo_strip_replaces_individual_logos_in_header(): void
+    {
+        $this->actingAs($this->admin, 'admin');
+        $png = UploadedFile::fake()->createWithContent('strip.png', base64_decode(self::PNG));
+
+        $this->put(route('admin.settings.update', 'general'), [
+            'settings' => ['site_name' => 'Wear Plates Synergy VE India', 'make_in_india' => 1, 'iso_certified' => 1, 'header_logo_strip' => $png],
+        ])->assertSessionHasNoErrors()->assertRedirect();
+
+        $strip = \App\Models\Setting::where('key', 'header_logo_strip')->value('value');
+        $this->assertStringStartsWith('uploads/settings/', $strip);
+        $this->get('/')->assertSee('class="cert-strip"', false)->assertSee($strip, false);
+    }
+
     public function test_header_shows_uploaded_certification_logos(): void
     {
         $this->actingAs($this->admin, 'admin');

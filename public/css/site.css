@@ -431,8 +431,8 @@ a:hover .more i { transform: translateX(4px); }
 @media (max-width: 575.98px) { .ve-steps { grid-template-columns: 1fr; } }
 
 /* ---------- Industries ---------- */
-.industry-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
-.industry-tile { position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 3 / 3.6; display: block; color: #fff; isolation: isolate; }
+.industry-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
+.industry-tile { position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4 / 4.2; display: block; color: #fff; isolation: isolate; }
 .industry-tile .media { position: absolute; inset: 0; }
 .industry-tile .media-ph-icon { display: none; }
 .industry-tile::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(11, 17, 24, .05) 20%, rgba(11, 17, 24, .92)); transition: background .35s; }
@@ -442,8 +442,8 @@ a:hover .more i { transform: translateX(4px); }
 .industry-tile:hover .industry-body i { background: var(--gold); color: var(--ink); }
 .industry-body strong { font-family: var(--font-head); font-size: 1.02rem; line-height: 1.25; color: #fff; }
 .industry-body small { font-size: .76rem; color: rgba(255, 255, 255, .65); }
-@media (max-width: 1199.98px) { .industry-grid { grid-template-columns: repeat(4, 1fr); } }
-@media (max-width: 991.98px) { .industry-grid { grid-template-columns: repeat(3, 1fr); } }
+/* 4 per row on desktop (8 sectors = 2 even rows); 2 per row below 992px so rows stay even. */
+@media (max-width: 991.98px) { .industry-grid { grid-template-columns: repeat(2, 1fr); } .industry-tile { aspect-ratio: 4 / 3.4; } }
 @media (max-width: 575.98px) { .industry-grid { grid-template-columns: 1fr 1fr; } .industry-tile { aspect-ratio: 1; } }
 
 /* ---------- Process list (home) ---------- */

@@ -212,7 +212,7 @@
         </div>
         <div class="industry-grid">
             @foreach ($sectors as $sector)
-                <a href="{{ route('industries') }}#sector-{{ \Illuminate\Support\Str::slug($sector['name'] ?? '') }}" class="industry-tile reveal" data-delay="{{ $loop->index % 5 }}">
+                <a href="{{ route('industries') }}#sector-{{ \Illuminate\Support\Str::slug($sector['name'] ?? '') }}" class="industry-tile reveal" data-delay="{{ $loop->index % 4 }}">
                     <x-media :src="$sector['image'] ?? null" :alt="$sector['name'] ?? ''" :icon="$sector['icon'] ?? 'fa-solid fa-industry'" class="industry-img" />
                     <span class="industry-body">
                         <i class="{{ $sector['icon'] ?? 'fa-solid fa-industry' }}" aria-hidden="true"></i>
