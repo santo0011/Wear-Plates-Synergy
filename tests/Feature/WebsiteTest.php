@@ -18,7 +18,7 @@ class WebsiteTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->seed([SettingSeeder::class, CatalogueSeeder::class, LocationSeeder::class]);
+        $this->seed([SettingSeeder::class, CatalogueSeeder::class, LocationSeeder::class, \Database\Seeders\ContentSeeder::class]);
     }
 
     public function test_all_public_pages_render(): void
@@ -28,6 +28,7 @@ class WebsiteTest extends TestCase
 
         foreach ([
             route('home'), route('about'), route('why'), route('presence'), route('contact'),
+            route('leadership'), route('industries'), route('infrastructure'), route('quality'), route('projects'), route('resources'),
             route('products.index'), route('products.category', $category),
             route('products.show', [$category, $product]), route('sitemap'),
         ] as $url) {
@@ -40,9 +41,10 @@ class WebsiteTest extends TestCase
         $this->get('/')
             ->assertSee('The Leader in Wear Protection')
             ->assertSee('Since 2008')
-            ->assertSee('ISO Certified')
+            ->assertSee('ISO 9001:2015')
             ->assertSee('MSME Registered')
-            ->assertSee('Explore Our Products')
+            ->assertSee('Our Products &amp; Solutions', false)
+            ->assertSee('Make in India')
             ->assertSee('+91 7981795006')
             ->assertSee('24AGWPD5947K1ZT')
             ->assertSee('Blue Dart')

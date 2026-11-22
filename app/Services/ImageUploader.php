@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
  */
 class ImageUploader
 {
-    public const RULES = ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:3072', 'dimensions:max_width=5000,max_height=5000'];
+    public const RULES = ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:6144', 'dimensions:max_width=8000,max_height=8000'];
 
     public function store(UploadedFile $file, string $folder): string
     {

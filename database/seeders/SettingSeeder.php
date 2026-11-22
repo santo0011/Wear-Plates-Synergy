@@ -21,56 +21,37 @@ class SettingSeeder extends Seeder
             'general' => [
                 ['site_name', 'Company Name', 'text', 'Wear Plates Synergy VE India'],
                 ['tagline', 'Tagline', 'text', 'The Leader in Wear Protection'],
+                ['motto', 'Motto', 'text', 'Expertise to Lead, Lead to the Bench Marking', 'Shown in the top bar and footer.'],
                 ['established_year', 'Established Year', 'text', '2008'],
-                ['iso_certified', 'Show "ISO Certified" badge', 'boolean', '1'],
-                ['msme_registered', 'Show "MSME Registered" badge', 'boolean', '1'],
-                ['logo', 'Logo', 'image', null, 'Optional. Upload a replacement logo badge (square PNG/WebP with transparent background). Leave empty to use the company badge.'],
+                ['logo', 'Company Logo', 'image', null, 'Square PNG/WebP with transparent background (min. 400 × 400 px). Leave empty to use the bundled company badge.'],
+                ['header_logo_strip', 'Header Logo Strip (all logos in one image)', 'image', null, 'Recommended. ONE transparent PNG containing all certification logos side by side (Make in India, ISO, MSME …), about 600 × 120 px. Shown in the website header only – when uploaded it replaces the individual logos below in the header. The footer always uses the individual logos.'],
+                ['make_in_india_logo', 'Make in India Logo (footer)', 'image', null, 'Official Make in India logo, transparent PNG (about 400 × 200 px). Shown in the footer (and in the header only if no Header Logo Strip is uploaded).'],
+                ['iso_logo', 'ISO Certification Logo (footer)', 'image', null, 'ISO 9001:2015 certification mark from your certification body, transparent PNG (about 300 × 300 px).'],
+                ['msme_logo', 'MSME Logo (footer)', 'image', null, 'Optional MSME / Udyam logo, transparent PNG.'],
+                ['iso_label', 'ISO Standard Text', 'text', 'ISO 9001:2015', 'Shown next to the ISO logo and in badges.'],
+                ['iso_certified', 'Show ISO badge', 'boolean', '1'],
+                ['msme_registered', 'Show MSME badge', 'boolean', '1'],
+                ['make_in_india', 'Show Make in India badge', 'boolean', '1'],
                 ['login_image', 'Admin Login Background Image', 'image', null, 'Optional wide photo (e.g. your plant). Leave empty to use a collage of product images.'],
-                ['footer_about', 'Footer About Text', 'textarea', 'The leader in wear protection – wear liners, plates, Hardox fabrications, ceramics, tungsten carbide, alloy castings, welding electrodes and high-temperature coatings.'],
+                ['footer_about', 'Footer About Text', 'textarea', 'The leader in wear protection that includes Wear Liner, Parts, Components, Standard Plates, Hardox - Fabrications, Ceramics, Tungsten Carbide, Alloys Castings and Maintenance & Fabrication Welding Electrodes, Coatings for Thermal Insulation and Corrosion Resistance at High Temperature.'],
             ],
             'contact' => [
                 ['phone', 'Mobile Number', 'tel', '+91 7981795006'],
+                ['phone_secondary', 'Second Mobile Number', 'tel', '+91 8800556273', 'Optional. Leave empty to hide.'],
                 ['whatsapp_number', 'WhatsApp Number', 'tel', '+91 7981795006', 'Include the country code. Used for all WhatsApp buttons.'],
-                ['email', 'Email Address', 'email', null, 'Leave empty to hide email on the website.'],
+                ['email', 'Email Address', 'email', 'care.wpsynergyveindia@gmail.com', 'Leave empty to hide email on the website.'],
+                ['email_secondary', 'Second Email Address', 'email', 'wpsvei@gmail.com', 'Optional. Leave empty to hide.'],
                 ['gstin', 'GSTIN', 'text', '24AGWPD5947K1ZT'],
-                ['corporate_office', 'Corporate Office', 'text', 'Mumbai'],
-                ['plant_location', 'Manufacturing Plant', 'text', 'GIDC, Ankleshwar, Gujarat'],
-                ['plant_address', 'Verified Full Plant Address', 'textarea', null, 'Enter only a verified complete address. Shown on the Contact page when filled.'],
-                ['business_hours', 'Business Hours', 'text', null, 'Optional, e.g. "Mon – Sat". Leave empty to hide.'],
-                ['google_map_embed', 'Google Map Embed URL', 'embed', null, 'Add only once a verified full address is available. Google Maps → Share → Embed a map → copy the src URL.'],
-            ],
-            'home' => [
-                ['hero_title', 'Hero Title', 'text', 'WEAR PLATES SYNERGY VE INDIA'],
-                ['hero_tagline', 'Hero Tagline', 'text', 'The Leader in Wear Protection'],
-                ['hero_text', 'Hero Text', 'textarea', 'Wear liners, parts and components, standard plates, Hardox fabrications, ceramics, tungsten carbide, alloy castings, welding electrodes and high-temperature coatings – complete wear protection solutions for industry.'],
-                ['hero_image', 'Hero Background Image', 'image', null, 'Optional wide photo (min. 1600px). Leave empty for the default industrial artwork.'],
-                ['intro_heading', 'Introduction Heading', 'text', 'Complete Wear Protection Solutions'],
-                ['intro_text', 'Introduction Text', 'textarea', $about],
-            ],
-            'about' => [
-                ['about_heading', 'About Heading', 'text', 'The Leader in Wear Protection'],
-                ['about_text', 'Company Description', 'textarea', $about],
-                ['about_tagline', 'About Tagline', 'text', 'The expertise to lead, Lead to the bench marking.'],
-                ['about_image', 'About Image', 'image', null, 'Optional photo of the plant or products.'],
-                ['md_name', 'Managing Director Name', 'text', null, 'Optional. Leave empty to show the title only.'],
-                ['md_title', 'Managing Director Title', 'text', 'Managing Director'],
-                ['md_message', "Managing Director's Message", 'textarea', 'We are committed to delivering premium wear protection solutions with reliability, innovation, and service excellence. Our focus is on quality, durability, and service excellence.'],
-                ['md_photo', 'Managing Director Photo', 'image', null],
-            ],
-            'why' => [
-                ['why_heading', 'Section Heading', 'text', 'Why Choose Us'],
-                ['why_intro', 'Section Introduction', 'textarea', 'Since 2008 we have supplied wear protection solutions to industry from our manufacturing plant at GIDC, Ankleshwar, supported by offices across India.'],
-                ['why_items', 'Reasons (one per line)', 'list', implode("\n", [
-                    'fa-solid fa-certificate | ISO Certified & MSME Registered | A certified and registered enterprise focused on consistent quality.',
-                    'fa-solid fa-calendar-check | Serving Since 2008 | Experience in supplying wear protection products and solutions since 2008.',
-                    'fa-solid fa-map-location-dot | Pan-India Presence | Corporate office in Mumbai, manufacturing plant at GIDC Ankleshwar and regional offices across India.',
-                    'fa-solid fa-helmet-safety | Custom Fabrications & Engineering Support | Fabrication and engineering support tailored to your application.',
-                    'fa-solid fa-shield-halved | Quality Materials & Durable Solutions | Wear protection products chosen for durability and reliable service life.',
-                    'fa-solid fa-screwdriver-wrench | Technical Service | Technical guidance and service support from enquiry to delivery.',
-                ]), 'Format per line: icon class | Title | Description. Icons from fontawesome.com (free, solid).'],
+                ['udyam_number', 'Udyam (MSME) Registration No.', 'text', 'UDYAM-GJ-06-0058021'],
+                ['corporate_office', 'Corporate Office (short)', 'text', 'Mumbai'],
+                ['plant_location', 'Manufacturing Plant (short)', 'text', 'GIDC, Ankleshwar, Gujarat'],
+                ['registered_office', 'Registered Office Address', 'textarea', 'G-66, Ground Floor, Ganesh Square, GIDC, Ankleshwar 393002, Dist. Bharuch, Gujarat, India'],
+                ['plant_address', 'Manufacturing Plant Address', 'textarea', 'Plot No. 4311, Near Crystal Chowkdi (BSNL Tower), GIDC, Ankleshwar 393002, Dist. Bharuch, Gujarat, India'],
+                ['business_hours', 'Business Hours', 'text', null, 'Optional, e.g. "Mon – Sat, 9:30 am – 6:30 pm". Leave empty to hide.'],
+                ['google_map_embed', 'Google Map Embed URL', 'embed', null, 'Google Maps → Share → Embed a map → copy the src URL.'],
             ],
             'delivery' => [
-                ['delivery_heading', 'Section Heading', 'text', 'Delivery & Logistics'],
+                ['delivery_heading', 'Section Heading', 'text', 'Our Freight Forwarder'],
                 ['delivery_partners', 'Courier / Logistics Partners', 'text', 'Blue Dart | DHL', 'Separate names with "|".'],
                 ['delivery_text', 'Delivery Text', 'textarea', 'Fast Delivery from Ankleshwar Plant Through Air & Surface Transports.'],
             ],
@@ -114,12 +95,16 @@ class SettingSeeder extends Seeder
                     'help' => $item[4] ?? null,
                     'sort_order' => $order,
                 ]);
-                if (! $setting->exists) {
+                // Never overwrite values edited in the admin panel; only fill empty ones.
+                if (! $setting->exists || $setting->value === null || $setting->value === '') {
                     $setting->value = $value;
                 }
                 $setting->save();
             }
         }
+
+        // Page content moved to the page-section editor (Admin → Website Pages).
+        Setting::whereIn('group', ['home', 'about', 'why'])->delete();
 
         Cache::forget(Setting::CACHE_KEY);
     }

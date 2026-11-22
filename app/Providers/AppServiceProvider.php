@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
             static $categories = null;
             if ($categories === null) {
                 try {
-                    $categories = ProductCategory::active()->ordered()->get(['id', 'name', 'slug', 'icon']);
+                    $categories = ProductCategory::active()->ordered()->get(['id', 'name', 'slug', 'icon', 'short_description']);
                 } catch (Throwable) {
                     $categories = collect();
                 }

@@ -2,172 +2,140 @@
 
 @section('canonical', route('home'))
 
+@php
+    $hero = cms('home.hero');
+    $trust = cms('home.trust');
+    $about = cms('home.about');
+    $stats = cms('home.stats');
+    $prod = cms('home.products');
+    $ve = cms('home.value_engineering');
+    $ind = cms('home.industries');
+    $process = cms('home.process');
+    $proj = cms('home.projects');
+    $clients = cms('home.clients');
+    $cta = cms('home.cta');
+    $sectors = cms('industries.sectors')->items('sectors');
+    $projects = array_slice(cms('projects.projects')->items('projects'), 0, 3);
+    $slides = $hero->items('slides');
+@endphp
+
 @section('content')
-@php
-    $year = (int) setting('established_year', 2008);
-    $heroImage = setting('hero_image');
-    $regionalCount = $locations->where('type', 'regional')->count();
-@endphp
 
-{{-- ================= HERO ================= --}}
-@php
-    $heroTitle = setting('hero_title', 'WEAR PLATES SYNERGY VE INDIA');
-    $hasAccent = \Illuminate\Support\Str::contains($heroTitle, 'VE INDIA');
-    $trust = array_values(array_filter([
-        'Since '.$year,
-        setting('iso_certified') ? 'ISO Certified' : null,
-        setting('msme_registered') ? 'MSME Registered' : null,
-    ]));
-@endphp
-<section class="hero2 {{ $heroImage ? 'has-image' : '' }}" @if ($heroImage) style="--hero-img:url('{{ asset($heroImage) }}')" @endif>
-    <div class="hero2-bg" aria-hidden="true">
-        <span class="hero2-blob b1"></span>
-        <span class="hero2-blob b2"></span>
-    </div>
-    <div class="container position-relative">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-7 text-center text-lg-start">
-                <p class="hero2-eyebrow h-anim" style="--d:.1s">Wear Protection Specialists</p>
-                <h1 class="hero2-title">
-                    @if ($hasAccent)
-                        <span class="line"><span style="--d:.25s">{{ trim(\Illuminate\Support\Str::before($heroTitle, 'VE INDIA')) }}</span></span>
-                        <span class="line"><span class="accent" style="--d:.4s">VE India</span></span>
-                    @else
-                        <span class="line"><span style="--d:.25s">{{ $heroTitle }}</span></span>
+{{-- ================= HERO SLIDER ================= --}}
+@if ($hero->active() && $slides)
+<section class="hero" id="sec-hero" aria-label="Highlights">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6500" data-bs-pause="hover">
+        <div class="carousel-inner">
+            @foreach ($slides as $i => $slide)
+                <div @class(['carousel-item', 'active' => $i === 0])>
+                    <div @class(['hero-bg', 'has-image' => ! empty($slide['image'])]) @if (! empty($slide['image'])) style="background-image:url('{{ asset($slide['image']) }}')" @endif aria-hidden="true"></div>
+                    <div class="hero-shade" aria-hidden="true"></div>
+                    @if (empty($slide['image']))
+                        <div class="hero-mark" aria-hidden="true"><img src="{{ asset(setting('logo') ?: 'images/brand/logo.png') }}" alt=""></div>
                     @endif
-                </h1>
-                <p class="hero2-tagline h-anim" style="--d:.6s">{{ setting('hero_tagline', setting('tagline')) }}</p>
-                <p class="hero2-lead h-anim" style="--d:.75s">{{ setting('hero_text') }}</p>
-                <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start h-anim" style="--d:.9s">
-                    <a href="{{ route('products.index') }}" class="btn btn-gold btn-lg">Explore Our Products <i class="fa-solid fa-arrow-right ms-2"></i></a>
-                    <a href="{{ route('contact') }}" class="btn btn-outline-light-gold btn-lg">Contact Us</a>
-                </div>
-                <ul class="hero2-trust h-anim" style="--d:1.05s">
-                    @foreach ($trust as $item)
-                        <li><i class="fa-solid fa-circle-check"></i>{{ $item }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="col-lg-5">
-                <div class="hero2-visual h-anim-zoom" style="--d:.35s">
-                    <span class="ring r1" aria-hidden="true"></span>
-                    <span class="ring r2" aria-hidden="true"></span>
-                    <span class="ring r3" aria-hidden="true"><i></i></span>
-                    <span class="glow" aria-hidden="true"></span>
-                    <img src="{{ asset(setting('logo') ?: 'images/brand/logo.png') }}" alt="{{ setting('site_name', config('app.name')) }} logo" width="512" height="512" fetchpriority="high">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="hero-wave" aria-hidden="true">
-        <svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0 70V40C240 10 480 0 720 18S1200 60 1440 30V70Z" fill="#fff"/></svg>
-    </div>
-</section>
-
-{{-- ================= STATS ================= --}}
-<section class="stats-strip">
-    <div class="container">
-        @php
-            $stats = [
-                ['fa-calendar-days', $year, 'Established', ['data-count' => $year, 'data-from' => max(0, $year - 18)]],
-                ['fa-boxes-stacked', $categories->count(), 'Product Categories', ['data-count' => $categories->count()]],
-                ['fa-map-location-dot', $regionalCount, 'Regional Offices', ['data-count' => $regionalCount]],
-                ['fa-industry', 'GIDC', 'Ankleshwar Plant', []],
-            ];
-        @endphp
-        <div class="stats-card reveal">
-            <div class="row g-2">
-                @foreach ($stats as $i => [$icon, $value, $label, $count])
-                    <div class="col-6 col-lg-3">
-                        <div class="stat" style="--i: {{ $i }}">
-                            <div class="stat-icon"><i class="fa-solid {{ $icon }}"></i></div>
-                            <div>
-                                @if ($count)
-                                    <div class="stat-value" data-delay="{{ 250 + $i * 150 }}" @foreach ($count as $attr => $v) {{ $attr }}="{{ $v }}" @endforeach>{{ $value }}</div>
-                                @else
-                                    <div class="stat-value stat-letters" aria-label="{{ $value }}">@foreach (mb_str_split((string) $value) as $c => $ch)<span style="--c: {{ $c }}" aria-hidden="true">{{ $ch }}</span>@endforeach</div>
+                    <div class="container-wide hero-content">
+                        <div class="hero-copy">
+                            @if (! empty($slide['eyebrow']))<span class="hero-eyebrow">{{ $slide['eyebrow'] }}</span>@endif
+                            @if ($i === 0)
+                                <h1 class="hero-title">{{ heading_text($slide['title'] ?? '') }}</h1>
+                            @else
+                                <h2 class="hero-title">{{ heading_text($slide['title'] ?? '') }}</h2>
+                            @endif
+                            @if (! empty($slide['text']))<p class="hero-text">{{ $slide['text'] }}</p>@endif
+                            <div class="hero-actions">
+                                @if (! empty($slide['button_text']))
+                                    <a href="{{ cms_link($slide['button_link'] ?? null, route('products.index')) }}" class="btn btn-gold btn-lg">{{ $slide['button_text'] }}<i class="fa-solid fa-arrow-right ms-2"></i></a>
                                 @endif
-                                <div class="stat-label">{{ $label }}</div>
+                                <a href="{{ route('contact') }}#enquiry" class="btn btn-outline-light btn-lg">Get a Quote</a>
                             </div>
                         </div>
                     </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</section>
-
-{{-- ================= INTRO ================= --}}
-<section class="section">
-    <div class="container">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6 reveal reveal-left">
-                <div class="position-relative">
-                    <div class="intro-mosaic">
-                        @foreach ($categories->take(4) as $cat)
-                            <div class="tile">@if ($cat->image_url)<img src="{{ $cat->image_url }}" alt="{{ $cat->name }}" loading="lazy" width="800" height="560">@endif</div>
-                        @endforeach
-                    </div>
-                    <div class="exp-badge"><strong>{{ $year }}</strong><span>Since</span></div>
-                </div>
-            </div>
-            <div class="col-lg-6 reveal reveal-right">
-                <span class="eyebrow">Who We Are</span>
-                <h2 class="section-title">{{ setting('intro_heading', 'Complete Wear Protection Solutions') }}</h2>
-                <p class="fs-6">{{ setting('intro_text') }}</p>
-                <ul class="check-list two-col">
-                    <li><i class="fa-solid fa-check"></i>Wear Liners &amp; Plates</li>
-                    <li><i class="fa-solid fa-check"></i>Hardox Fabrications</li>
-                    <li><i class="fa-solid fa-check"></i>Ceramics &amp; Tungsten Carbide</li>
-                    <li><i class="fa-solid fa-check"></i>Alloys Castings</li>
-                    <li><i class="fa-solid fa-check"></i>Welding Electrodes</li>
-                    <li><i class="fa-solid fa-check"></i>High-Temperature Coatings</li>
-                </ul>
-                @if ($tag = setting('about_tagline'))
-                    <div class="quote-tagline mb-4">&ldquo;{{ $tag }}&rdquo;</div>
-                @endif
-                <a href="{{ route('about') }}" class="btn btn-maroon btn-lg">More About Us <i class="fa-solid fa-arrow-right ms-2"></i></a>
-            </div>
-        </div>
-    </div>
-</section>
-
-{{-- ================= PRODUCT CATEGORIES ================= --}}
-<section class="section bg-light-gray">
-    <div class="container">
-        <x-section-heading eyebrow="Products & Solutions" title='Our <span class="hl">Product</span> Categories'
-            subtitle="A complete range of wear protection products and solutions for industry." />
-        <div class="row g-4">
-            @foreach ($categories as $i => $category)
-                <div class="col-md-6 col-lg-4 reveal" data-delay="{{ ($i % 3) + 1 }}">
-                    <x-category-card :category="$category" :index="$i + 1" />
                 </div>
             @endforeach
         </div>
-        <div class="text-center mt-5 reveal">
-            <a href="{{ route('products.index') }}" class="btn btn-outline-maroon btn-lg">View All Products <i class="fa-solid fa-arrow-right ms-2"></i></a>
+        @if (count($slides) > 1)
+            <div class="container-wide hero-controls">
+                <div class="hero-dots">
+                    @foreach ($slides as $i => $slide)
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ $i }}" @class(['active' => $i === 0]) @if ($i === 0) aria-current="true" @endif aria-label="Slide {{ $i + 1 }}: {{ plain_text($slide['title'] ?? '') }}">
+                            <span class="num">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                            <span class="lbl">{{ \Illuminate\Support\Str::limit(plain_text($slide['eyebrow'] ?? $slide['title'] ?? ''), 34) }}</span>
+                            <span class="bar"><i></i></span>
+                        </button>
+                    @endforeach
+                </div>
+                <div class="hero-arrows">
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Previous slide"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Next slide"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        @endif
+    </div>
+</section>
+@endif
+
+{{-- ================= TRUST STRIP ================= --}}
+@if ($trust->active() && $trust->items('items'))
+<section class="trust-strip" id="sec-trust">
+    <div class="container-wide">
+        <ul class="trust-list">
+            @foreach ($trust->items('items') as $item)
+                <li class="reveal" data-delay="{{ min($loop->index, 5) }}">
+                    <span class="trust-icon"><i class="{{ $item['icon'] ?? 'fa-solid fa-check' }}" aria-hidden="true"></i></span>
+                    <span><strong>{{ $item['title'] ?? '' }}</strong><small>{{ $item['text'] ?? '' }}</small></span>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+</section>
+@endif
+
+{{-- ================= ABOUT ================= --}}
+@if ($about->active())
+<section class="section" id="sec-about">
+    <div class="container-wide">
+        <div class="row align-items-center g-5 g-xl-6">
+            <div class="col-lg-6 reveal reveal-left">
+                <div class="about-collage">
+                    <x-media :src="$about->image" :alt="plain_text($about->heading)" icon="fa-solid fa-industry" class="about-main" />
+                    <x-media :src="$about->image_2" alt="Wear plates" icon="fa-solid fa-layer-group" class="about-sub" />
+                    @if ($about->badge_value)
+                        <div class="about-badge"><span>{{ $about->badge_label }}</span><strong>{{ $about->badge_value }}</strong></div>
+                    @endif
+                </div>
+            </div>
+            <div class="col-lg-6 reveal reveal-right">
+                <x-section-heading :eyebrow="$about->eyebrow" :heading="$about->heading" />
+                <div class="prose">{{ rich_text($about->text) }}</div>
+                @if ($about->lines('points'))
+                    <ul class="tick-list two-col mt-4">
+                        @foreach ($about->lines('points') as $point)<li>{{ $point }}</li>@endforeach
+                    </ul>
+                @endif
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a href="{{ route('about') }}" class="btn btn-brand">{{ $about->get('button_text', 'More About Us') }}<i class="fa-solid fa-arrow-right ms-2"></i></a>
+                    <a href="{{ route('leadership') }}" class="btn btn-link-arrow">Meet our leadership <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+@endif
 
-{{-- ================= WHY CHOOSE US ================= --}}
-<section class="section section-dark">
-    <div class="container">
-        <x-section-heading eyebrow="Why Choose Us" :title="e(setting('why_heading', 'Why Choose Us'))" :subtitle="setting('why_intro')" />
-        <x-why-grid />
-    </div>
-</section>
-
-{{-- ================= FEATURED PRODUCTS ================= --}}
-@if ($featuredProducts->isNotEmpty())
-<section class="section">
-    <div class="container">
-        <x-section-heading eyebrow="Featured" title='Featured <span class="hl">Solutions</span>'
-            subtitle="Enquire online or on WhatsApp for sizes, grades and availability." />
-        <div class="row g-4">
-            @foreach ($featuredProducts as $i => $product)
-                <div class="col-md-6 col-lg-4 reveal" data-delay="{{ ($i % 3) + 1 }}">
-                    <x-product-card :product="$product" />
+{{-- ================= STATS ================= --}}
+@if ($stats->active() && $stats->items('items'))
+<section class="stats-band" id="sec-stats">
+    <div class="container-wide">
+        <x-section-heading :eyebrow="$stats->eyebrow" :heading="$stats->heading" :light="true" :center="true" class="mb-5" />
+        <div class="stats-grid">
+            @foreach ($stats->items('items') as $item)
+                @php $num = preg_replace('/\D/', '', (string) ($item['value'] ?? '')); @endphp
+                <div class="stat-cell reveal" data-delay="{{ min($loop->index, 5) }}">
+                    <i class="{{ $item['icon'] ?? 'fa-solid fa-chart-simple' }} stat-ico" aria-hidden="true"></i>
+                    <div class="stat-num">
+                        @if ($num !== '')<span data-count="{{ $num }}">{{ number_format((int) $num) }}</span>@else<span>{{ $item['value'] ?? '' }}</span>@endif<em>{{ $item['suffix'] ?? '' }}</em>
+                    </div>
+                    <div class="stat-lbl">{{ $item['label'] ?? '' }}</div>
                 </div>
             @endforeach
         </div>
@@ -175,55 +143,193 @@
 </section>
 @endif
 
-{{-- ================= PRESENCE ================= --}}
-<section class="section bg-light-gray">
-    <div class="container">
-        <div class="row align-items-center g-5">
+{{-- ================= PRODUCTS ================= --}}
+@if ($prod->active() && $categories->isNotEmpty())
+<section class="section bg-soft" id="sec-products">
+    <div class="container-wide">
+        <div class="sec-head-row">
+            <x-section-heading :eyebrow="$prod->eyebrow" :heading="$prod->heading" :text="$prod->text" />
+            <a href="{{ route('products.index') }}" class="btn btn-outline-brand">View All Products<i class="fa-solid fa-arrow-right ms-2"></i></a>
+        </div>
+        <div class="row g-4">
+            @foreach ($categories as $category)
+                <div class="col-sm-6 col-xl-3 reveal" data-delay="{{ $loop->index % 4 }}">
+                    @include('products.partials.category-card', ['category' => $category])
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+
+{{-- ================= VALUE ENGINEERING ================= --}}
+@if ($ve->active())
+<section class="ve-band" id="sec-value_engineering" @if ($ve->image) style="--ve-img:url('{{ asset($ve->image) }}')" @endif>
+    <div class="container-wide position-relative">
+        <div class="row g-5 align-items-center">
             <div class="col-lg-5 reveal reveal-left">
-                <span class="eyebrow">Our Presence</span>
-                <h2 class="section-title">India-Wide <span class="hl">Presence</span></h2>
-                <p class="section-sub mb-4">Corporate office in {{ setting('corporate_office', 'Mumbai') }}, manufacturing plant at {{ setting('plant_location', 'GIDC, Ankleshwar, Gujarat') }}, and regional offices across India.</p>
-                <div class="row g-3 mb-4">
-                    @foreach ($locations->whereIn('type', ['corporate', 'plant']) as $loc)
-                        <div class="col-sm-6">
-                            <div class="loc-card {{ $loc->type }}" data-loc="{{ $loc->id }}">
-                                <span class="loc-card-icon"><i class="fa-solid {{ $loc->type === 'plant' ? 'fa-industry' : 'fa-building' }}"></i></span>
-                                <div><span class="loc-type">{{ $loc->type_label }}</span><h4>{{ $loc->city }}</h4></div>
+                <x-section-heading :eyebrow="$ve->eyebrow" :heading="$ve->heading" :light="true" />
+                <div class="prose is-light">{{ rich_text($ve->text) }}</div>
+                <div class="lpf-equation">
+                    <span>Right Material</span><i class="fa-solid fa-plus"></i><span>Right Place</span><i class="fa-solid fa-equals"></i><strong>Higher LPF &amp; ROI</strong>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <ol class="ve-steps">
+                    @foreach ($ve->items('steps') as $step)
+                        <li class="reveal" data-delay="{{ $loop->index }}">
+                            <span class="ve-num">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                            <i class="{{ $step['icon'] ?? 'fa-solid fa-check' }} ve-ico" aria-hidden="true"></i>
+                            <h3>{{ $step['title'] ?? '' }}</h3>
+                            <p>{{ $step['text'] ?? '' }}</p>
+                        </li>
+                    @endforeach
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
+
+{{-- ================= INDUSTRIES ================= --}}
+@if ($ind->active() && $sectors)
+<section class="section" id="sec-industries">
+    <div class="container-wide">
+        <div class="sec-head-row">
+            <x-section-heading :eyebrow="$ind->eyebrow" :heading="$ind->heading" :text="$ind->text" />
+            <a href="{{ route('industries') }}" class="btn btn-outline-brand">Industries &amp; Services<i class="fa-solid fa-arrow-right ms-2"></i></a>
+        </div>
+        <div class="industry-grid">
+            @foreach ($sectors as $sector)
+                <a href="{{ route('industries') }}#sector-{{ \Illuminate\Support\Str::slug($sector['name'] ?? '') }}" class="industry-tile reveal" data-delay="{{ $loop->index % 5 }}">
+                    <x-media :src="$sector['image'] ?? null" :alt="$sector['name'] ?? ''" :icon="$sector['icon'] ?? 'fa-solid fa-industry'" class="industry-img" />
+                    <span class="industry-body">
+                        <i class="{{ $sector['icon'] ?? 'fa-solid fa-industry' }}" aria-hidden="true"></i>
+                        <strong>{{ $sector['name'] ?? '' }}</strong>
+                        <small>{{ count(cms_lines($sector['jobs'] ?? '')) }} key services</small>
+                    </span>
+                </a>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+
+{{-- ================= PROCESS ================= --}}
+@if ($process->active())
+<section class="section bg-soft" id="sec-process">
+    <div class="container-wide">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-5 reveal reveal-left">
+                <x-section-heading :eyebrow="$process->eyebrow" :heading="$process->heading" :text="$process->text" />
+                <x-media :src="$process->image" alt="Robotic weld cladding" icon="fa-solid fa-robot" class="ratio-4x3 rounded-media mt-4" />
+            </div>
+            <div class="col-lg-7">
+                <ol class="process-list">
+                    @foreach ($process->items('steps') as $step)
+                        <li class="reveal" data-delay="{{ $loop->index }}">
+                            <span class="process-ico"><i class="{{ $step['icon'] ?? 'fa-solid fa-check' }}" aria-hidden="true"></i></span>
+                            <div>
+                                <span class="process-step">Step {{ $loop->iteration }}</span>
+                                <h3>{{ $step['title'] ?? '' }}</h3>
+                                <p>{{ $step['text'] ?? '' }}</p>
                             </div>
-                        </div>
+                        </li>
                     @endforeach
+                </ol>
+                <a href="{{ route('infrastructure') }}" class="btn btn-link-arrow mt-2">Explore our infrastructure <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
+
+{{-- ================= PROJECTS ================= --}}
+@if ($proj->active() && $projects)
+<section class="section" id="sec-projects">
+    <div class="container-wide">
+        <div class="sec-head-row">
+            <x-section-heading :eyebrow="$proj->eyebrow" :heading="$proj->heading" :text="$proj->text" />
+            <a href="{{ route('projects') }}" class="btn btn-outline-brand">All Projects<i class="fa-solid fa-arrow-right ms-2"></i></a>
+        </div>
+        <div class="row g-4">
+            @foreach ($projects as $project)
+                <div class="col-md-6 col-lg-4 reveal" data-delay="{{ $loop->index }}">
+                    <a href="{{ route('projects') }}#project-{{ $loop->iteration }}" class="project-card">
+                        <x-media :src="$project['image'] ?? null" :alt="$project['title'] ?? ''" icon="fa-solid fa-helmet-safety" class="project-img" />
+                        <span class="project-body">
+                            @if (! empty($project['category']))<span class="tag">{{ $project['category'] }}</span>@endif
+                            <strong>{{ $project['title'] ?? '' }}</strong>
+                            <small>{{ \Illuminate\Support\Str::limit($project['summary'] ?? '', 120) }}</small>
+                            <span class="more">View project <i class="fa-solid fa-arrow-right"></i></span>
+                        </span>
+                    </a>
                 </div>
-                <div class="d-flex flex-wrap gap-2 mb-4">
-                    @foreach ($locations->where('type', 'regional') as $loc)
-                        <span class="product-meta-chip" data-loc="{{ $loc->id }}"><i class="fa-solid fa-location-dot"></i>{{ $loc->city }}</span>
-                    @endforeach
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+
+{{-- ================= CLIENTS ================= --}}
+@if ($clients->active() && $clients->items('clients'))
+<section class="section-sm clients-band" id="sec-clients">
+    <div class="container-wide">
+        <x-section-heading :eyebrow="$clients->eyebrow" :heading="$clients->heading" :text="$clients->text" :center="true" class="mb-5" />
+    </div>
+    <div class="marquee" aria-label="Our clients">
+        <div class="marquee-track">
+            @foreach ([1, 2] as $pass)
+                @foreach ($clients->items('clients') as $client)
+                    <span class="client-logo" @if ($pass === 2) aria-hidden="true" @endif>
+                        @if (! empty($client['logo']))
+                            <img src="{{ asset($client['logo']) }}" alt="{{ $pass === 1 ? ($client['name'] ?? '') : '' }}" loading="lazy">
+                        @else
+                            {{ $client['name'] ?? '' }}
+                        @endif
+                    </span>
+                @endforeach
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+
+{{-- ================= PRESENCE ================= --}}
+@if ($locations->isNotEmpty())
+<section class="section bg-soft" id="sec-presence">
+    <div class="container-wide">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-5 reveal reveal-left">
+                <x-section-heading eyebrow="Our Presence" heading="Wherever You Are, **We Are**"
+                    text="Corporate office in Mumbai, a manufacturing plant at GIDC Ankleshwar and regional offices across India – with fast delivery by air and surface through Blue Dart and DHL." />
+                <div class="presence-counts">
+                    <div><strong>{{ $locations->where('type', 'corporate')->count() }}</strong><span>Corporate Office</span></div>
+                    <div><strong>{{ $locations->where('type', 'plant')->count() }}</strong><span>Manufacturing Plant</span></div>
+                    <div><strong>{{ $locations->where('type', 'regional')->count() }}</strong><span>Regional Offices</span></div>
                 </div>
-                <a href="{{ route('presence') }}" class="btn btn-maroon">View All Locations <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                <a href="{{ route('presence') }}" class="btn btn-brand mt-4">View All Locations<i class="fa-solid fa-arrow-right ms-2"></i></a>
             </div>
             <div class="col-lg-7 reveal reveal-right">
-                <div class="presence-wrap"><x-india-map :locations="$locations" /></div>
+                <x-india-map :locations="$locations" />
             </div>
         </div>
     </div>
 </section>
+@endif
 
-{{-- ================= MD MESSAGE ================= --}}
-<section class="section">
-    <div class="container"><x-md-message /></div>
-</section>
-
-{{-- ================= DELIVERY ================= --}}
-<section class="section pt-0">
-    <div class="container"><x-delivery-band /></div>
-</section>
-
-{{-- ================= CONTACT ================= --}}
-<section class="section bg-light-gray">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-lg-5 reveal reveal-left">@include('partials.contact-info')</div>
-            <div class="col-lg-7 reveal reveal-right"><x-enquiry-form /></div>
+{{-- ================= CTA ================= --}}
+@if ($cta->active())
+<section class="cta-band" id="sec-cta" @if ($cta->image) style="--cta-img:url('{{ asset($cta->image) }}')" @endif>
+    <div class="container-wide">
+        <div class="cta-inner reveal">
+            <div>
+                <h2>{{ heading_text($cta->heading) }}</h2>
+                <p>{{ $cta->text }}</p>
+            </div>
+            <a href="{{ cms_link($cta->button_link, route('contact')) }}" class="btn btn-gold btn-lg">{{ $cta->get('button_text', 'Request a Quote') }}<i class="fa-solid fa-arrow-right ms-2"></i></a>
         </div>
     </div>
 </section>
+@endif
 @endsection

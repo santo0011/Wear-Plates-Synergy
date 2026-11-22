@@ -3,7 +3,7 @@
     $points = $locations->filter->has_map_point;
     $plant = $points->firstWhere('type', 'plant');
     // Labels that would overlap nearby pins are placed on the opposite side.
-    $leftLabels = ['Mumbai', 'Ahmedabad', 'Chittorgarh', 'Jamshedpur'];
+    $leftLabels = ['Mumbai', 'Ahmedabad', 'Udaipur', 'Jamshedpur'];
 @endphp
 <div class="india-map">
     <svg viewBox="-10 -10 620 620" role="img" aria-labelledby="indiaMapTitle">

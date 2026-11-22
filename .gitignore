@@ -22,3 +22,6 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Client source material (very large – keep out of git)
+/knowledge_pdf

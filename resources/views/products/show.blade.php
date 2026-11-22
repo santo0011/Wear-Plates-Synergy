@@ -1,74 +1,101 @@
 @extends('layouts.app')
 
 @section('title', $product->meta_title ?: $product->name)
-@section('meta_description', (string) ($product->meta_description ?: ($product->short_description ?: $category->short_description)))
+@section('meta_description', (string) ($product->meta_description ?: $product->short_description))
+@section('canonical', $product->url)
+
+@php
+    $highlights = cms_lines($product->highlights);
+    $specs = cms_pairs($product->specifications);
+    $table = cms_table($product->data_table);
+    $applications = cms_lines($product->applications);
+@endphp
 
 @section('content')
-<x-page-hero :title="$product->name" :subtitle="$product->short_description"
-    :breadcrumbs="['Products & Solutions' => route('products.index'), $category->name => route('products.category', $category), $product->name => null]" />
+<x-page-hero :title="$product->name" :subtitle="$product->subtitle ?: $product->short_description" :crumbs="['Products' => route('products.index'), $category->name => route('products.category', $category)]" />
 
 <section class="section">
-    <div class="container">
+    <div class="container-wide">
         <div class="row g-5">
             <div class="col-lg-8">
-                <div class="row g-4">
-                    <div class="col-md-6 reveal reveal-left">
-                        <div class="product-gallery">
-                            @if ($img = $product->display_image_url)
-                                <img src="{{ $img }}" alt="{{ $product->name }}" width="800" height="600">
-                            @endif
-                        </div>
+                <div class="row g-4 align-items-start mb-2">
+                    <div class="col-md-6">
+                        <x-media :src="$product->image" :alt="$product->name" :icon="$category->icon_class" class="ratio-4x3 rounded-media product-hero-img" :eager="true" />
                     </div>
-                    <div class="col-md-6 reveal reveal-right">
-                        <a href="{{ route('products.category', $category) }}" class="product-meta-chip mb-3"><i class="{{ $category->icon_class }}"></i>{{ $category->name }}</a>
-                        <h2 class="section-title fs-2">{{ $product->name }}</h2>
-                        @if ($product->short_description)
-                            <p class="lead fs-6 text-muted">{{ $product->short_description }}</p>
+                    <div class="col-md-6">
+                        <span class="eyebrow">{{ $category->name }}</span>
+                        <p class="product-lead">{{ $product->short_description }}</p>
+                        @if ($highlights)
+                            <ul class="tick-list">
+                                @foreach ($highlights as $h)<li>{{ $h }}</li>@endforeach
+                            </ul>
                         @endif
-                        <div class="d-flex flex-wrap gap-2 mt-4">
-                            <a href="{{ route('contact', ['product' => $product->slug]) }}#enquiry" class="btn btn-maroon"><i class="fa-solid fa-paper-plane me-2"></i>Enquire Now</a>
-                            @if ($wa = whatsapp_url('Hello, I would like to enquire about: '.$product->name.' ('.$category->name.')'))
-                                <a href="{{ $wa }}" target="_blank" rel="noopener" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp me-2"></i>WhatsApp</a>
-                            @endif
-                        </div>
                     </div>
                 </div>
 
                 @if ($product->description)
-                    <div class="mt-5 reveal">
-                        <h3 class="text-uppercase fs-4 mb-3">Product Overview</h3>
-                        <div class="divider-gold mb-4"></div>
-                        <div class="product-desc">{!! nl2br(e($product->description)) !!}</div>
+                    <div class="content-block">
+                        <h2 class="sub-title">Overview</h2>
+                        <div class="prose">{{ rich_text($product->description) }}</div>
                     </div>
                 @endif
 
-                <div class="info-panel mt-5 reveal">
-                    <div class="row g-3 text-center">
-                        <div class="col-6 col-md-3"><i class="fa-solid fa-certificate text-maroon fs-3 mb-2"></i><div class="small fw-semibold">{{ setting('iso_certified') ? 'ISO Certified' : 'Since '.setting('established_year', '2008') }}</div></div>
-                        <div class="col-6 col-md-3"><i class="fa-solid fa-helmet-safety text-maroon fs-3 mb-2"></i><div class="small fw-semibold">Custom Fabrication</div></div>
-                        <div class="col-6 col-md-3"><i class="fa-solid fa-screwdriver-wrench text-maroon fs-3 mb-2"></i><div class="small fw-semibold">Technical Service</div></div>
-                        <div class="col-6 col-md-3"><i class="fa-solid fa-truck-fast text-maroon fs-3 mb-2"></i><div class="small fw-semibold">Air &amp; Surface Delivery</div></div>
+                @if ($specs)
+                    <div class="content-block">
+                        <h2 class="sub-title">Specifications</h2>
+                        <dl class="spec-list">
+                            @foreach ($specs as [$label, $value])
+                                <div><dt>{{ $label }}</dt><dd>{{ $value }}</dd></div>
+                            @endforeach
+                        </dl>
                     </div>
-                </div>
+                @endif
+
+                @if (count($table) > 1)
+                    <div class="content-block">
+                        <h2 class="sub-title">{{ $product->data_table_title ?: 'Technical Data' }}</h2>
+                        @include('partials.data-table', ['rows' => $table])
+                    </div>
+                @endif
+
+                @if ($applications)
+                    <div class="content-block">
+                        <h2 class="sub-title">Applications</h2>
+                        <ul class="app-chips">
+                            @foreach ($applications as $app)<li><i class="fa-solid fa-circle-check"></i>{{ $app }}</li>@endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
 
             <aside class="col-lg-4">
-                <div class="position-sticky" style="top: 110px">
+                <div class="sticky-aside">
                     @include('products.partials.enquiry-sidebar', ['subject' => $product->name, 'productSlug' => $product->slug])
+                    <div class="side-card mt-4">
+                        <h3 class="side-title">Why WPI Products</h3>
+                        <ul class="side-points">
+                            <li><i class="fa-solid fa-certificate"></i>{{ setting('iso_label', 'ISO 9001:2015') }} certified manufacturing</li>
+                            <li><i class="fa-solid fa-flask"></i>Documented chemistry &amp; hardness</li>
+                            <li><i class="fa-solid fa-truck-fast"></i>Pan-India delivery from Ankleshwar</li>
+                            <li><i class="fa-solid fa-headset"></i>Application engineering support</li>
+                        </ul>
+                    </div>
                 </div>
             </aside>
         </div>
-
-        @if ($related->isNotEmpty())
-            <div class="mt-5 pt-4">
-                <x-section-heading eyebrow="Related" title='Related <span class="hl">Products</span>' />
-                <div class="row g-4">
-                    @foreach ($related as $i => $item)
-                        <div class="col-md-6 col-lg-4 reveal" data-delay="{{ $i + 1 }}"><x-product-card :product="$item" /></div>
-                    @endforeach
-                </div>
-            </div>
-        @endif
     </div>
 </section>
+
+@if ($related->isNotEmpty())
+<section class="section bg-soft">
+    <div class="container-wide">
+        <x-section-heading eyebrow="More from this category" :heading="'Related **Products**'" />
+        <div class="row g-4">
+            @foreach ($related as $item)
+                <div class="col-md-6 col-lg-4 reveal" data-delay="{{ $loop->index }}">@include('products.partials.product-card', ['product' => $item])</div>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
 @endsection

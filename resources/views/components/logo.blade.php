@@ -1,6 +1,6 @@
 @props(['light' => false])
 @php
-    // Logo badge: an uploaded logo (Admin → General) overrides the bundled company badge.
+    // Admin → Website Settings → General & Logos overrides the bundled company badge.
     $logo = setting('logo') ?: 'images/brand/logo-192.png';
     $siteName = setting('site_name', config('app.name'));
 @endphp

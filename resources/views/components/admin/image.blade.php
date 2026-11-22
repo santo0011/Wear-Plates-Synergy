@@ -1,4 +1,4 @@
-@props(['name', 'label', 'current' => null, 'removeName' => 'remove_image', 'help' => 'JPG, PNG or WebP. Max 3 MB.'])
+@props(['name', 'label', 'current' => null, 'removeName' => 'remove_image', 'help' => 'JPG, PNG or WebP. Max 6 MB.'])
 @php $id = 'f_'.str_replace(['[', ']', '.'], '_', $name); $dot = str_replace(['[', ']'], ['.', ''], $name); @endphp
 <div class="mb-3">
     <label for="{{ $id }}" class="form-label">{{ $label }}</label>

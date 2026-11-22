@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
             SettingSeeder::class,
             CatalogueSeeder::class,
             LocationSeeder::class,
+            ContentSeeder::class,
         ]);
     }
 }

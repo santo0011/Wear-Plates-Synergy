@@ -1,12 +1,8 @@
-<div class="contact-info-card">
-    <span class="eyebrow text-gold">Contact</span>
-    <h3 class="mb-3">{{ setting('site_name', config('app.name')) }}</h3>
-    <p class="mb-3">Reach out for product enquiries, quotations and technical support.</p>
-
+<div class="contact-panel">
     @if ($phone = setting('phone'))
         <div class="contact-item">
             <i class="fa-solid fa-phone"></i>
-            <div><small>Mobile</small><a href="{{ tel_url($phone) }}">{{ $phone }}</a></div>
+            <div><small>Call us</small><a href="{{ tel_url($phone) }}">{{ $phone }}</a>@if ($p2 = setting('phone_secondary'))<a href="{{ tel_url($p2) }}">{{ $p2 }}</a>@endif</div>
         </div>
     @endif
     @if ($wa = whatsapp_url('Hello '.setting('site_name', config('app.name')).', I have an enquiry.'))
@@ -18,33 +14,25 @@
     @if ($email = setting('email'))
         <div class="contact-item">
             <i class="fa-solid fa-envelope"></i>
-            <div><small>Email</small><a href="mailto:{{ $email }}">{{ $email }}</a></div>
+            <div><small>Email</small><a href="mailto:{{ $email }}">{{ $email }}</a>@if ($e2 = setting('email_secondary'))<a href="mailto:{{ $e2 }}">{{ $e2 }}</a>@endif</div>
         </div>
     @endif
-    @if ($corp = setting('corporate_office'))
-        <div class="contact-item">
-            <i class="fa-solid fa-building"></i>
-            <div><small>Corporate Office</small><strong>{{ $corp }}</strong></div>
-        </div>
-    @endif
-    @if ($plant = setting('plant_location'))
+    @if ($addr = setting('plant_address'))
         <div class="contact-item">
             <i class="fa-solid fa-industry"></i>
-            <div><small>Manufacturing Plant</small><strong>{{ $plant }}</strong>
-                @if ($addr = setting('plant_address'))<div class="small mt-1">{!! nl2br(e($addr)) !!}</div>@endif
-            </div>
+            <div><small>Manufacturing Plant</small><span>{{ $addr }}</span></div>
         </div>
     @endif
     @if ($gst = setting('gstin'))
         <div class="contact-item">
             <i class="fa-solid fa-file-invoice"></i>
-            <div><small>GSTIN</small><strong>{{ $gst }}</strong></div>
+            <div><small>GSTIN</small><span>{{ $gst }}</span></div>
         </div>
     @endif
     @if ($hours = setting('business_hours'))
         <div class="contact-item">
             <i class="fa-solid fa-clock"></i>
-            <div><small>Business Hours</small><strong>{{ $hours }}</strong></div>
+            <div><small>Business Hours</small><span>{{ $hours }}</span></div>
         </div>
     @endif
 </div>

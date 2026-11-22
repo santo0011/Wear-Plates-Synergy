@@ -29,7 +29,8 @@
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  // Count-up numbers
+  // Count-up numbers (Indian digit grouping, e.g. 11,000)
+  function fmt(n) { try { return n.toLocaleString('en-IN'); } catch (e) { return String(n); } }
   var counters = document.querySelectorAll('[data-count]');
   if ('IntersectionObserver' in window && counters.length) {
     var co = new IntersectionObserver(function (entries) {
@@ -41,12 +42,12 @@
         var suffix = el.getAttribute('data-suffix') || '';
         var start = null, duration = 1600;
         co.unobserve(el);
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = target + suffix; return; }
-        el.textContent = from + suffix;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = fmt(target) + suffix; return; }
+        el.textContent = fmt(from) + suffix;
         function step(ts) {
           if (!start) start = ts;
           var p = Math.min((ts - start) / duration, 1);
-          el.textContent = Math.round(from + (target - from) * (1 - Math.pow(1 - p, 4))) + suffix;
+          el.textContent = fmt(Math.round(from + (target - from) * (1 - Math.pow(1 - p, 4)))) + suffix;
           if (p < 1) requestAnimationFrame(step);
           else { el.classList.add('count-done'); }
         }
@@ -55,6 +56,27 @@
     }, { threshold: 0.5 });
     counters.forEach(function (el) { co.observe(el); });
   }
+
+  // Hero slider: keep the custom progress dots in sync with the active slide
+  var hero = document.getElementById('heroCarousel');
+  if (hero) {
+    var dots = hero.querySelectorAll('.hero-dots [data-bs-slide-to]');
+    hero.addEventListener('slide.bs.carousel', function (e) {
+      dots.forEach(function (d, i) {
+        var on = i === e.to;
+        d.classList.toggle('active', on);
+        if (on) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
+      });
+    });
+  }
+
+  // Close the mobile menu after choosing an in-page link
+  document.querySelectorAll('#mainNav a[href*="#"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var nav = document.getElementById('mainNav');
+      if (nav && nav.classList.contains('show') && window.bootstrap) bootstrap.Collapse.getOrCreateInstance(nav).hide();
+    });
+  });
 
   // Bootstrap client-side validation
   document.querySelectorAll('form.needs-validation').forEach(function (form) {

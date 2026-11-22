@@ -1,0 +1,466 @@
+=====================================================================================
+ WEAR PLATES SYNERGY VE INDIA – PDF → WEBSITE CONTENT & IMAGE MAPPING
+ Source PDF : knowledge_pdf/Untitled_removed.pdf  (56 scanned pages)
+ Website    : all text below is already entered in the website (editable in admin).
+              Images are NOT uploaded – enhance them and upload from the admin panel.
+=====================================================================================
+
+Verbatim text of every PDF page: docs/PDF_TRANSCRIPT.txt
+
+HOW TO READ THIS FILE
+---------------------
+  Website    = page URL  »  section on that page
+  Admin      = where to edit it in the admin sidebar
+               (Website Pages » <Main menu> » <Sub menu>)
+  IMAGE      = a photo in the PDF and the exact admin field to upload it to
+
+  Image rules (all upload fields): JPG / PNG / WebP, max 6 MB each, max 20 files per Save.
+  Upload enhanced, high-resolution photos – the website crops them automatically.
+  Until a photo is uploaded the website shows a neat dark placeholder, so nothing looks broken.
+
+
+=====================================================================================
+ PART A – PAGE-BY-PAGE MAPPING
+=====================================================================================
+
+PDF PAGE 01 – Cover with visiting card
+  Text   : Office addresses (Registered, Plant, Mumbai, Hyderabad, Kolkata, Udaipur), email
+  Website: /contact-us » "Addresses Across India"  |  /our-presence » office cards  |  footer
+  Admin  : Website Pages » Contact Us » Introduction » Office Addresses
+           Website Pages » Our Presence » Offices & Locations
+           Configuration » Website Settings » Contact Details
+  IMAGE  : 5 tiny photos on the card – too small to use. (Not required.)
+
+PDF PAGE 02 – Gold "WP" emblem
+  Website: header logo, footer logo, home slider emblem
+  IMAGE  : Emblem → Configuration » Website Settings » General & Logos » "Company Logo"
+           (export as SQUARE transparent PNG, min 400×400 px)
+
+PDF PAGE 03 – One-page brochure (About / Products / Why / MD desk / Presence / Delivery)
+  Text   : About us paragraph   → /  » Who We Are       (Home Page » About Introduction)
+           Products & solutions → /products categories   (Products » Categories)
+           Why choose us (6)    → /why-choose-us » Reasons 1–6   (Why Choose Us » Reasons)
+           MD's desk quote      → /about-us » MD's Message      (About Us » MD's Message)
+           Presence list        → /our-presence                 (Our Presence » Offices & Locations)
+           Blue Dart | DHL      → delivery band                 (Website Settings » Delivery & Logistics)
+           GST, mobile          → header / footer / contact     (Website Settings » Contact Details)
+  IMAGE  : Logo only (see page 02). QR code not used.
+
+PDF PAGE 04 – Company Profile (letterhead page 1)
+  Text   : Intro + "Wear Plates brings" (5 points)
+             → /about-us » Company Profile      Admin: About Us » Company Profile
+           Metal Form Mumbai, Kladex UK & Turkey
+             → /about-us » Associations          Admin: About Us » Associations
+           Facility list (25-yr team, 6G welders, 20,000 sq ft, lathes, metal spray,
+           roll cladding, positioners, 20 T crane, column & boom)
+             → /infrastructure » Facilities      Admin: Infrastructure » Facilities
+  IMAGE  : Letterhead logos (WP, MSME, Make in India lion, ISO)
+             → Website Settings » General & Logos » "Make in India Logo", "ISO Certification
+               Logo", "MSME Logo".  Please use the OFFICIAL logo files, not scans.
+
+PDF PAGE 05 – Facilities (cont.) + Management profile table
+  Text   : All welding processes, X-Y-Z semi-auto welding
+             → /infrastructure » Facilities ; /industries » Rebuilding Capability
+           Management table (9 people) + promoters
+             → /leadership » Management Team     Admin: Leadership » Management Team
+  IMAGE  : none. (Optional: upload a photo for each team member in Leadership » Management Team.)
+
+PDF PAGE 06 – Activities, Valued Engineering, capacity, THWPHARDOX intro, concept
+  Text   : Activities paragraphs        → /about-us » Company Profile
+           "Valued Engineering" VE / LPF → / » Valued Engineering ; /why-choose-us
+                                            Admin: Home Page » Value Engineering
+           Capacity 11,000 m² / 5,000 m / 700 T → / » Capacity Numbers ; /infrastructure » Production Capacity
+           WPI THWPHARDOX intro, clients replaced Hardox
+                                         → /products/through-hard-wear-plates (category text)
+           WPI Abrasodur base/coating, THE CONCEPT
+                                         → /products/composite-wear-plates (category text)
+  IMAGE  : none.
+
+PDF PAGE 07 – The Process, The Working, Applications, Standard plate, WPI Wear Tube
+  Text   : The Process (robot)  → /infrastructure » Manufacturing Process ; / » How We Work
+           Applications list    → Abrasodur product pages » Applications
+           Standard plate 3000×1350, 1100 m²/month → Composite Wear Plates category text
+           WPI WEAR TUBE paragraph → /products/wear-tubes-and-lined-pipes ; product "WPI Wear Tube"
+  IMAGE 1: Plates + blue grates photo
+             → Website Pages » Home Page » How We Work » "Photo"
+             → also: Infrastructure » Manufacturing Process » Step 1 "Photo"
+  IMAGE 2: Gallery of 13 finished components (elbows, cones, chutes, Y-pieces…)
+             Crop the single components and use them as product photos:
+               grit / cone pieces    → Products » All Products » "GRIT CONE"
+               elbows / bends        → Products » "BULK DISPATCH – COMPOSITE LINED PIPES"
+               chutes / box pieces   → Products » "The Project of a Cement Plant"
+               Y-pieces / manifolds  → Products » "WPI WEAR TUBE™ with ABRASODUR ALLOY"
+             Whole gallery picture   → Technical Resources » Proven Applications » "Products from World Leaders"
+
+PDF PAGE 08 – 16-ton rotor
+  Text   : → /projects » project 03 "The Rotor"   Admin: Projects » Iconic Projects » item 3
+  IMAGE 1: Mining dumper / excavator
+             → Technical Resources » Earth Moving & Mining » "Photo"
+             → Industries & Services » Industry Sectors » "Defense Industry" » "Photo" (or Technical Resources » Earth Moving & Mining)
+  IMAGE 2: Plates on shop floor with forklift
+             → Home Page » About Introduction » "Main Photo"
+             → Infrastructure » Plant Gallery » item 1 "Composite wear plates on the shop floor"
+
+PDF PAGE 09 – Best start-up 2020, client list, pipes, castings, SiC, WC
+  Text   : Award 2020        → /about-us » Milestones (2020)
+           Client list       → / » Clients (logos marquee)   Admin: Home Page » Clients
+           Quality–pricing–delivery → /quality » Quality Commitment
+  IMAGE 1: Large wear pipes (left)           → Products » "WPI WEAR TUBE™ with ABRASODUR ALLOY" » Product Image
+  IMAGE 2: Y-branch pipes (middle)           → Infrastructure » Plant Gallery » item 1 "Quality of Finished Goods at Synergy Plant"
+  IMAGE 3: Long pipes (right)                → Products » "BULK DISPATCH – COMPOSITE LINED PIPES" » Product Image
+  IMAGE 4: "Castings" (studded rollers)      → Products » "Castings" » Product Image
+  IMAGE 5: "Silicon Carbide" (rings)         → Products » "Silicon Carbide" » Product Image
+  IMAGE 6: "Tungsten Carbide" (blade)        → Products » "Tungsten Carbide" » Product Image
+  CLIENT LOGOS (optional, not in PDF): upload each client's logo in Home Page » Clients.
+
+PDF PAGE 10 – Fabrication photos + "open to challenging jobs"
+  Text   : → /industries » Introduction
+  IMAGE 1: Multi-outlet cone (top left)      → Infrastructure » Plant Gallery » item 5 "Structural Fabrication with Wear Plates"
+  IMAGE 2: Flanged pipe spools (top right)   → Infrastructure » Plant Gallery » item 5 "Wear plates ready for dispatch"
+  IMAGE 3: Big cone with person (bottom left)→ Projects » Fabrication Capability » "Background Photo"
+  IMAGE 4: Hard-faced cone/hopper (bottom right) → Products » "GRIT CONE" (if no better photo)
+
+PDF PAGE 11 (= 17) – Key jobs: Steel & Cement + Special Welding Wires banner
+  Text   : → /industries » Industry Sectors » "Steel Plants and OEMs", "Cement Plants and OEMs"
+           Admin: Industries & Services » Industry Sectors
+  IMAGE  : "Special Welding Wires" banner (wire spools)
+             → Products » "SPECIAL WELDING WIRES" » Product Image   (crop the spools only)
+           Colourful logo variants – not used.
+
+PDF PAGE 12 – Kladex steel mill roll reconditioning table
+  Text   : → /industries » Roll Reconditioning Table   Admin: Industries & Services » Roll Reconditioning Table
+           → Products » "Kladex Roll Cladding Consumables" (data table)
+           "Inconel reformer pipeline welding" → Oil & Gas sector
+  IMAGE  : none.
+
+PDF PAGE 13 – Key jobs: Oil & Gas (ONGC), Petrochemical, Forging, Sugar, Fabrication, Defence
+  Text   : → /industries » Industry Sectors (6 sectors)
+           → Products » "Surface coating engineering on valves…", "Thermal Metal powder Spray coating of shafts"
+  IMAGE  : none.
+
+PDF PAGE 14 (= 16) – Iconic jobs: trucks loaded with fabricated structures (06/05/2022)
+  Text   : → /projects » project 07 "Iconic Jobs – Structural Fabrication with Wear Plates"
+  IMAGE 1: Truck with chute structure (top)  → Projects » Iconic Projects » item 7 » "Main Photo"
+  IMAGE 2: Trailer with hoppers (bottom)     → Projects » Iconic Projects » item 7 » "Second Photo"
+                                              → Why Choose Us » Our Promise » "Photo"
+
+PDF PAGE 15 – Cement plant project 75 T, Grit cones 13 T & 16 T
+  Text   : → /projects » project 01 "The Project of a Cement Plant" and project 02 "GRIT CONE"
+           → /projects » Fabrication Capability ("trial ground…")
+  IMAGE 1: Grit cone – cement plant (left)   → Projects » Iconic Projects » item 2 » "Main Photo"
+                                              → Products » "GRIT CONE" » Product Image
+  IMAGE 2: Grit cone – steel plant, person (right) → Projects » Iconic Projects » item 2 » "Second Photo"
+  NOTE   : No photo for project 01 in the PDF – please supply one (crusher house / packing plant structure).
+
+PDF PAGE 16 – duplicate of page 14 (skip)
+PDF PAGE 17 – duplicate of page 11 (skip)
+
+PDF PAGE 18 (better scan on page 39) – Proven Potential Applications (PPA)
+  Text   : → /technical-resources » Proven Applications ; /products » introduction
+  IMAGES : Admin: Technical Resources » Proven Applications » items
+             item 1 Vertical Roller Mill          ← tile "Vertical Roller Mill"
+             item 2 Cold Sinter Screen            ← tile "Cold Sinter Screen"
+             item 3 Hot Sinter Screen             ← tile "Hot Sinter Screen"
+             item 4 RMC Plant                     ← tile "RMC Plant"
+             item 5 RMC Pan Liners                ← tile "RMC Pan Liners"
+             item 6 RMC Pan Side Liners           ← tile "RMC Pan Side Liners"
+             item 7 WPI Abrasodur 091004 Plates   ← tile "WPI Abrasodur 091004"
+                                                   (also → Products » "WPI ABRASODUR 091004™" » Product Image)
+             item 8 Products from World Leaders   ← page 7 component gallery
+           "How we're different" (silo stairs), "Local worldwide" people photo, balance scale – not used.
+           (RMC tiles are used only in Technical Resources » Proven Applications)
+
+PDF PAGE 19 – Tube forming rolls row, international references, MD signature block, freight
+  Text   : → /industries » Roll table (last row) + note under table
+           → Website Settings » Contact Details (second mobile +91 8800556273, emails)
+           → Website Settings » Delivery & Logistics (Blue Dart / DHL)
+  IMAGE  : QR code / courier logos – not used.
+
+PDF PAGE 20 – List of Major Machines (16 machines)
+  Text   : → /infrastructure » List of Major Machines   Admin: Infrastructure » Machinery List
+  IMAGE  : none.
+
+PDF PAGE 21 – Mission & Values Roadmap (compass)
+  Text   : "Forge with Strength. Serve with Synergy." + North/East/South/West values
+             → /about-us » Mission & Values   Admin: About Us » Mission & Values
+           City list → /our-presence
+  IMAGE  : Compass → About Us » Mission & Values » "Compass Image" (OPTIONAL – the website already
+           draws an animated gold compass; upload only if you want the brochure compass instead).
+
+PDF PAGE 22 – Project 2026: 6 kW fiber laser, strategic alliance, Growth Bridge (CBC)
+  Text   : → /infrastructure » Capacity Expansion   Admin: Infrastructure » Capacity Expansion
+           → /about-us » Milestones (2026)
+           City list → /our-presence » Service Network (Our Presence » Introduction » Service Network Cities)
+  IMAGE  : none (design graphic). Optional: photo of the new fiber laser → Infrastructure » Capacity Expansion » Photo.
+
+PDF PAGE 23 – Message from the Managing Director – D. Deepti
+  Text   : → /about-us » MD's Message   Admin: About Us » MD's Message
+  IMAGE  : Portrait → About Us » MD's Message » "Photo"  (crop portrait 4:5, approx. 600×750 px)
+
+PDF PAGE 24 – MD profile – Pyaare Lal (P L) Mangal
+  Text   : → /leadership » profile 1   Admin: Leadership » Leader Profiles » item 1
+           (personal/family details intentionally left out – professional details only)
+  IMAGE  : Portrait → Leadership » Leader Profiles » item 1 "P L Mangal" » "Photo"
+           → also Leadership » Management Team » "P L Mangal" » "Photo" (optional)
+
+PDF PAGES 25–26 – COO profile – Prasanta Dhar (14 career highlights)
+  Text   : → /leadership » profile 2   Admin: Leadership » Leader Profiles » item 2
+  IMAGE  : Portrait → Leadership » Leader Profiles » item 2 "Prasanta Dhar" » "Photo"
+           → also Leadership » Management Team » "Prasanta Dhar" » "Photo" (optional)
+
+PDF PAGE 27 – Synergy group: 8 statements + 13 product photos
+  Text   : → /about-us » Synergy Group   Admin: About Us » Synergy Group
+  IMAGES : About Us » Synergy Group » "Group Product Range" items (same order as PDF):
+             1 Testing Lab   2 Syno SSWP   3 Performance Polymers   4 Syno Tubes
+             5 Syno WR Tile 100×100   6 Syno MMAW Rods   7 Syno Carb Wear Plates   8 Syno FC Wire
+             9 Syno Ceramics   10 Syno Ultraglide   11 Syno Turnkey Solutions
+             12 Syno Digital Welding Equipment   13 Syno Castings / Impact Hammers
+           "Testing Lab" photo also → Quality & Certifications » Testing » "Testing Lab Photo"
+                                    → Infrastructure » Plant Gallery » item 4 "Testing laboratory"
+
+PDF PAGE 28 – Synergy Infrastructure & Synergy Workshop buildings
+  IMAGE 1: Synergy Infrastructure → About Us » Synergy Group » "Infrastructure Photo"
+                                  → Infrastructure » Plant Gallery » item 2
+  IMAGE 2: Synergy Workshop       → About Us » Synergy Group » "Workshop Photo"
+                                  → Infrastructure » Plant Gallery » item 3
+
+PDF PAGE 29 – ISO 9001:2015 certificate (PQC)
+  Text   : → /quality » Certificates » item 1   Admin: Quality & Certifications » Certificates
+  IMAGE  : Certificate scan → Quality & Certifications » Certificates » item 1 » "Certificate Scan"
+
+PDF PAGE 30 – GST registration certificate
+  IMAGE  : Scan → Quality & Certifications » Certificates » item 3 (GST) » "Certificate Scan"
+
+PDF PAGE 31 – Udyam (MSME) registration certificate
+  IMAGE  : Scan → Quality & Certifications » Certificates » item 2 (Udyam) » "Certificate Scan"
+  (Optional: Trade-mark registration certificate → item 4 » "Certificate Scan")
+
+PDF PAGE 32 – Drawing: Layout & development of reducing elbow
+  IMAGE  : → Infrastructure » Design & Engineering » Drawings » item 1
+PDF PAGE 33 – Drawing: Truncated pipe 45°
+  IMAGE  : → Infrastructure » Design & Engineering » Drawings » item 2
+PDF PAGE 34 – Shop drawing "For Approval" (curved liner, Part No. 64.08.10093)
+  IMAGE  : → Infrastructure » Design & Engineering » Drawings » item 3
+           (remove customer name "M/s Srihari" from the image if it is confidential)
+
+PDF PAGE 35 – Quality Assurance Plan (rotated table)
+  Text   : → /quality » Quality Assurance Plan (6 stages + hold/witness note)
+           Admin: Quality & Certifications » Quality Assurance Plan
+  IMAGE  : not used (customer document).
+
+PDF PAGE 36 – Breaker Plate – WPI THWPHARDOX 400® (40 mm)
+  Text   : → /products/through-hard-wear-plates/breaker-plate-wpi-thwphardox-400
+  IMAGE  : Blue slotted breaker plates
+             → Products » All Products » "BREAKER PLATE - WPI THWPHARDOX 400®" » Product Image
+             → Home Page » Hero Slider » slide 1 » "Background Photo" (good hero photo)
+
+PDF PAGE 37 – FACTS: How is Hardfacing a part of everyday life?
+  Text   : → /technical-resources » What is Hardfacing + Key Facts ; Types of Wear
+           Admin: Technical Resources » What is Hardfacing / Types of Wear
+  IMAGE  : light-switch icon – not used.
+
+PDF PAGE 38 – FACTS (cont.): ASTM G-65, "a dollar saved…"
+  Text   : → /technical-resources » What is Hardfacing ; /quality » Quality Commitment
+  IMAGE 1: Component gallery (same as page 7) – see page 7
+  IMAGE 2: Hard-faced screw conveyor / rotor → Technical Resources » What is Hardfacing » "Photo"
+  IMAGE 3: Bucket-wheel / mining machine     → Technical Resources » Earth Moving & Mining » "Photo" (alternative)
+                                               (or Mining & Construction if preferred)
+
+PDF PAGE 39 – duplicate of page 18 (cleaner scan – use THIS page for the PPA tiles)
+
+PDF PAGE 40 – CONCEPT: Earth moving and mining
+  Text   : → /technical-resources » Earth Moving & Mining
+  IMAGE  : Dumper being loaded → Technical Resources » Earth Moving & Mining » "Photo"
+                                 (if page 8 dumper is used there, use this one for
+                                  Industries & Services » Industry Sectors » "Mining & Construction")
+
+PDF PAGE 41 – PRODUCT SPECTRUM: WPI Abrasodur & WPI PTA Platinum plates, thickness tables, 091004
+  Text   : → Composite Wear Plates category text ; product WPI Abrasodur 091004
+           → PTA Platinum Wear Plates category text ; thickness table on each PTA product
+  IMAGE  : none.
+
+PDF PAGE 42 – 280773, 311263, Yemenite 100440, Zirconite, Partite SCD 58LP
+  Text   : → the 5 product pages of these grades
+  IMAGE  : none – please supply product / micro-structure photos for these grades if available.
+
+PDF PAGE 43 (= 47) – SDIHFTP Small-diameter internally hard-faced tubes
+  Text   : → Products » "SDIHFTP – Small Diameter Internally Hard-Faced Tubes"
+  IMAGE 1: Three industry photos (steel plant at night / furnace / cement plant pipes)
+             steel plant at night → Industries & Services » Industry Sectors » "Steel Plants and OEMs" » "Photo"
+             furnace worker       → Industries & Services » Industry Sectors » "Forging Industry" » "Photo"
+             cement plant pipes   → Industries & Services » Industry Sectors » "Cement Plants and OEMs" » "Photo"
+  IMAGE 2: Tube cross-section diagram → (optional) SDIHFTP product image
+  IMAGE 3: Flanged pipe end           → Products » "Small Diameter Internally Hard Faced Tubes/Pipes" » Product Image
+  IMAGE 4: Long bent pipe on pallet   → Products » "BULK DISPATCH – COMPOSITE LINED PIPES" (if page 9 photo not used)
+
+PDF PAGE 44 (= 48) – World of Wear Plates pyramid
+  Text   : → /technical-resources » World of Wear Plates (built as an interactive graphic)
+           Admin: Technical Resources » World of Wear Plates » Tiers
+  IMAGE  : none needed.
+
+PDF PAGE 45 – PRODUCT SPECTRUM list (hardness, wear modes A / I / E / mI, EUA electrodes, special alloys)
+  Text   : → subtitles/specs of all WPI products ; Products » Page Introduction (wear-mode legend)
+           → Products » Special Alloys Note ; product "WPI Eutectic-Uni-Alloys (EUA) Electrodes"
+  IMAGE  : none.
+
+PDF PAGE 46 – Technical data: 091004, 220513
+PDF PAGE 49 – Technical data: 311263, 280773
+PDF PAGE 50 – Technical data: CastAlloyArco 201267 + Material of Construction
+  Text   : → "Bead Properties & Weld Chemistry" table on each product page
+           → /technical-resources » Product Data Sheets (automatic, from the product tables)
+           Admin: Products » All Products » <product> » Technical Details » Data Table
+
+PDF PAGE 47 – duplicate of 43 (skip)   PDF PAGE 48 – duplicate of 44 (skip)
+
+PDF PAGE 51 – CFSSWP / WPI THWPHARDOX Plate 500 / 450 / 400 data sheet
+  Text   : → Products » "WPI THWPHARDOX® Plate 400 / 450 / 500 / 600"
+  IMAGE 1: Press (left)        → Infrastructure » Manufacturing Process » Step 3 "Cut & Form" » "Photo"
+  IMAGE 2: Hot rolling (middle)→ Through-Hard Wear Plates category image (Products » Categories)
+  IMAGE 3: Plate stack (right) → Products » "WPI THWPHARDOX PLATE™ 500 / 400 / 450 / 600" » Product Image
+
+PDF PAGE 52 (= 56) – Brand page with gold "Since 2008" emblem, Order Us QR
+  Text   : → header/footer, /our-presence, Website Settings » Contact Details
+  IMAGE  : Gold emblem → alternative "Company Logo" (Website Settings » General & Logos)
+           or Home Page » About Introduction » "Second Photo".
+
+PDF PAGE 53 – ICONIC PROJECT: Heavy-duty conical hopper / silo (2024-25)
+  Text   : → /projects » project 04   Admin: Projects » Iconic Projects » item 4
+  IMAGE  : Cone → Projects » Iconic Projects » item 4 » "Main Photo"
+                → Products » "HEAVY-DUTY CONICAL HOPPER / SILO FABRICATION" » Product Image
+
+PDF PAGE 54 – FULL TRUCK DISPATCH – composite lined pipes
+  Text   : → /projects » project 06 ; Products » "BULK DISPATCH – COMPOSITE LINED PIPES"
+  IMAGE  : Component gallery (same as page 7). A real photo of a loaded truck would be ideal
+           → Projects » Iconic Projects » item 6 » "Main Photo".
+
+PDF PAGE 55 – SPRAY NOZZLE RING MANIFOLD – cement plants
+  Text   : → /projects » project 05 ; Products » "SPRAY NOZZLE RING MANIFOLD - CEMENT PLANTS"
+  IMAGE  : Ring manifold → Projects » Iconic Projects » item 5 » "Main Photo"
+                         → Products » "SPRAY NOZZLE RING MANIFOLD - CEMENT PLANTS" » Product Image
+
+PDF PAGE 56 – duplicate of page 52 (skip)
+
+
+=====================================================================================
+ PART B – IMAGE UPLOAD CHECKLIST (by admin menu)
+=====================================================================================
+ ✔ = photo available in the PDF (page no.)     ✚ = NOT in the PDF – please arrange a photo
+
+CONFIGURATION » WEBSITE SETTINGS » GENERAL & LOGOS
+  [ ] Company Logo ............................. ✔ p02 / p52 (transparent PNG)
+  [ ] Make in India Logo (header) .............. ✚ official logo file (shown in header & footer)
+  [ ] ISO Certification Logo (header) .......... ✚ official ISO 9001 mark from PQC (p29 shows it)
+  [ ] MSME Logo (optional) ..................... ✚ official MSME / Udyam logo
+  [ ] Admin Login Background (optional) ........ ✚ plant photo
+
+HOME PAGE
+  Hero Slider » slide 1 Background Photo ....... ✔ p36 (breaker plates) or ✚ plant photo
+  Hero Slider » slide 2 Background Photo ....... ✚ wear plates close-up / installed liners
+  Hero Slider » slide 3 Background Photo ....... ✚ robotic cladding machine in action
+  Hero Slider » slide 4 Background Photo ....... ✔ p15 grit cone / p53 hopper
+  About Introduction » Main Photo .............. ✔ p08 (plates on shop floor)
+  About Introduction » Second Photo ............ ✔ p07 (plates) or p52 emblem
+  How We Work » Photo .......................... ✔ p07 (plates + grates)
+  Value Engineering » Background (optional) .... ✚ any wide plant photo
+  Clients » logo per client (optional) ......... ✚ client logos
+  Call to Action » Background (optional) ....... ✚ any wide photo
+
+ABOUT US
+  Page Banner .................................. ✚ wide plant photo
+  Company Profile » Main Photo ................. ✚ plant exterior  (or ✔ p28)
+  Company Profile » Second Photo ............... ✔ p08 / p51
+  Associations » logo per partner (optional) ... ✚ Metal Form / Kladex / Synergy logos
+  Mission & Values » Compass (optional) ........ ✔ p21
+  MD's Message » Photo ......................... ✔ p23 (D. Deepti)
+  Synergy Group » Infrastructure Photo ......... ✔ p28
+  Synergy Group » Workshop Photo ............... ✔ p28
+  Synergy Group » 13 product photos ............ ✔ p27
+
+LEADERSHIP
+  Page Banner .................................. ✚
+  Leader Profiles » P L Mangal » Photo ......... ✔ p24
+  Leader Profiles » Prasanta Dhar » Photo ...... ✔ p25
+  Management Team » 9 photos (optional) ........ ✚ (initials are shown until uploaded)
+
+PRODUCTS
+  Page Banner .................................. ✚
+  Categories » 8 category images ............... ✔ p51 (through-hard), p09, p07 … / ✚ others
+  All Products » 30 product images (names exactly as on the website):
+     WPI ABRASODUR 091004™ ............. ✔ p39 tile     WPI ABRASODUR 220513™ ........ ✚
+     WPI ABRASODUR 311263™ ............. ✚              WPI ABRASODUR 280773™ ........ ✚
+     WPI CASTALLOYARCO PLATE 201267™ ... ✚              Yemenite / Zirconite / Partite ✚
+     WPI THWPHARDOX PLATE™ ............. ✔ p51          BREAKER PLATE - THWPHARDOX 400® ✔ p36
+     WPI WEAR TUBE™ with ABRASODUR ALLOY ✔ p09          Small Diameter … Tubes/Pipes . ✔ p43
+     BULK DISPATCH – COMPOSITE LINED PIPES ✔ p09/p54   SPRAY NOZZLE RING MANIFOLD ... ✔ p55
+     GRIT CONE ......................... ✔ p15          HEAVY-DUTY CONICAL HOPPER .... ✔ p53
+     The Rotor ......................... ✚              The Project of a Cement Plant  ✔ p14
+     SPECIAL WELDING WIRES ............. ✔ p11          Wear Plates –Kladex services . ✚
+     WPI Eutectic-Uni-Alloys (EUA) ..... ✚              Tungsten Carbide ............. ✔ p09
+     Silicon Carbide ................... ✔ p09          Castings ..................... ✔ p09
+     Rich Cr-C Alloys .................. ✚              Ceramics ..................... ✔ p27 (Syno Ceramics)
+     Cast Basalt ....................... ✚              Thermal Insulation & Corrosion Resistant Coatings ✚
+     Thermal Metal powder Spray coating  ✚              Surface coating engineering on valves … ✚
+
+INDUSTRIES & SERVICES
+  Page Banner .................................. ✚
+  Industry Sectors » 8 sector photos ........... ✔ p43 (steel, cement, forging) / ✚ others
+  Rebuilding Capability » Photo ................ ✚ welding / cladding in progress
+
+INFRASTRUCTURE
+  Page Banner .................................. ✚
+  Plant Overview » Plant Photo ................. ✚ (or ✔ p28)
+  Manufacturing Process » 4 step photos ........ ✔ p07, p51 / ✚
+  Design & Engineering » 3 drawings ............ ✔ p32, p33, p34
+  Capacity Expansion » Photo (optional) ........ ✚ fiber laser
+  Plant Gallery » 6 photos ..................... ✔ p08, p28 (×2), p27, p10 / ✚ yard
+
+QUALITY & CERTIFICATIONS
+  Page Banner .................................. ✚
+  Quality Commitment » Photo ................... ✚ inspection / hardness testing
+  Certificates » ISO / Udyam / GST / Trade Mark  ✔ p29, p31, p30 / ✚ TM certificate
+  Testing » Testing Lab Photo .................. ✔ p27
+
+PROJECTS
+  Page Banner .................................. ✚
+  Iconic Projects » 7 projects (main + second) . ✔ p15, p08, p53, p55, p54, p14 / ✚ project 1
+  Fabrication Capability » Background .......... ✔ p10
+
+TECHNICAL RESOURCES
+  Page Banner .................................. ✚
+  What is Hardfacing » Photo ................... ✔ p38
+  Earth Moving & Mining » Photo ................ ✔ p40 / p08
+  Proven Applications » 8 photos ............... ✔ p39 / p07
+
+WHY CHOOSE US / OUR PRESENCE / CONTACT US
+  Page Banners ................................. ✚
+  Why Choose Us » Our Promise » Photo .......... ✔ p14 (truck dispatch)
+
+
+=====================================================================================
+ PART C – POINTS FOR THE CLIENT TO CONFIRM  (differences found inside the PDF)
+=====================================================================================
+ 1. Managing Director: page 23 says "D. Deepti – Managing Director"; pages 5, 19 and 24 say
+    "P L Mangal – Managing Director". Website shows D. Deepti on the MD message and
+    P L Mangal as "Managing Director & Promoter" on Leadership. Please confirm titles.
+ 2. Technical data page 49: the chemistry of 311263 and 280773 appears swapped compared with
+    pages 42 and 45 (280773 = FeCrNbC 60–66 HRC; 311263 = complex carbides Mo/W/V).
+    The website shows every page exactly as printed. Please confirm which is correct.
+ 3. CastAlloyArco 201267 hardness: 57–62 HRC (page 45) vs 59–63 HRC (page 50). Both shown as printed.
+ 4. Prasanta Dhar experience: 30 years (page 5) vs 40+ years (page 25). Both shown as printed.
+ 5. Phone numbers: +91 7981795006 (main) and +91 8800556273 are both shown. Udyam certificate
+    lists 8104972288 (not shown). Page 53 shows +91 98250 12345 (looks like a sample – not shown).
+ 6. Emails: care.wpsynergyveindia@gmail.com (main), wpsvei@gmail.com, info.wpsynergyveindia@gmail.com,
+    plmangal.wpsynergy@gmail.com. Pages 21/36/53–55 also show www.wearplatessynergy.co.in and
+    contact@wearplatessynergy.co.in – not used until the domain email is confirmed.
+ 7. ISO certificate address says "G-60"; all other documents say "G-66". Website uses G-66.
+ 8. ® / ™ marks on WPI THWPHARDOX®, WPI Abrasodur™ etc. – please confirm registration status.
+ 9. WORD-FOR-WORD: all website text is taken verbatim from the PDF (full text: docs/PDF_TRANSCRIPT.txt;
+    only pure spelling slips corrected – listed at the end of that file). This now INCLUDES lines the
+    client may not want public:
+      • MD profile family / personal details (Leadership page, P L Mangal)
+      • sales notes: "Premium Cash Job", "Cash Value: … 100% advance", "Cash Note: … advance 50%",
+        "Iconic Cash Proof" (Breaker Plate, Bulk Dispatch, Spray Nozzle Ring products and Projects)
+      • the customer QAP (Veer Engineering, PO number) on the Quality page
+    Each can be removed from the admin panel if the client agrees.
+    The page-3 MD's-desk quote is cut off in the PDF ("…Our focus is on quality, durability,") – shown as printed.
+10. Make in India & ISO logos must be the official artwork, used as per their usage guidelines.

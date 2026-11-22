@@ -9,7 +9,7 @@ class SitemapController extends Controller
 {
     public function __invoke(): Response
     {
-        $urls = collect(['home', 'about', 'products.index', 'why', 'presence', 'contact'])
+        $urls = collect(['home', 'about', 'leadership', 'products.index', 'industries', 'infrastructure', 'quality', 'projects', 'resources', 'why', 'presence', 'contact'])
             ->map(fn ($name) => ['loc' => route($name), 'lastmod' => null]);
 
         ProductCategory::active()->ordered()->with('activeProducts')->get()->each(function ($category) use ($urls) {

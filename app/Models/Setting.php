@@ -12,11 +12,8 @@ class Setting extends Model
     public const CACHE_KEY = 'site_settings';
 
     public const GROUPS = [
-        'general' => ['label' => 'General', 'icon' => 'fa-solid fa-sliders'],
+        'general' => ['label' => 'General & Logos', 'icon' => 'fa-solid fa-sliders'],
         'contact' => ['label' => 'Contact Details', 'icon' => 'fa-solid fa-address-book'],
-        'home' => ['label' => 'Home Page', 'icon' => 'fa-solid fa-house'],
-        'about' => ['label' => 'About & MD Message', 'icon' => 'fa-solid fa-building'],
-        'why' => ['label' => 'Why Choose Us', 'icon' => 'fa-solid fa-award'],
         'delivery' => ['label' => 'Delivery & Logistics', 'icon' => 'fa-solid fa-truck-fast'],
         'seo' => ['label' => 'SEO', 'icon' => 'fa-solid fa-magnifying-glass'],
         'social' => ['label' => 'Social Links', 'icon' => 'fa-solid fa-share-nodes'],

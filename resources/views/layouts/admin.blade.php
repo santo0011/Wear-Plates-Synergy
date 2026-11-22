@@ -20,14 +20,7 @@
 </script>
 @php
     $admin = auth('admin')->user();
-    $nav = [
-        ['admin.dashboard', 'admin.dashboard', 'fa-solid fa-house', 'Dashboard'],
-        ['admin.enquiries.index', 'admin.enquiries.*', 'fa-solid fa-inbox', 'Enquiries'],
-        ['admin.products.index', 'admin.products.*', 'fa-solid fa-box', 'Products'],
-        ['admin.categories.index', 'admin.categories.*', 'fa-solid fa-layer-group', 'Categories'],
-        ['admin.locations.index', 'admin.locations.*', 'fa-solid fa-location-dot', 'Locations'],
-        ['admin.settings.edit', 'admin.settings.*', 'fa-solid fa-gear', 'Website Settings'],
-    ];
+    $menu = \App\Support\AdminMenu::build();
 @endphp
 
 <aside class="sidebar" id="adminSidebar">
@@ -37,15 +30,23 @@
         <span>Admin Panel</span>
     </a>
 
-    <nav class="sidebar-nav">
-        @foreach ($nav as [$route, $pattern, $icon, $label])
-            <a href="{{ route($route) }}" title="{{ $label }}" @class(['active' => request()->routeIs($pattern)])>
-                <i class="{{ $icon }}"></i><span>{{ $label }}</span>
-                @if ($route === 'admin.enquiries.index' && $newEnquiryCount)
-                    <span class="nav-badge">{{ $newEnquiryCount }}</span>
-                @endif
-            </a>
+    <nav class="sidebar-nav" aria-label="Admin menu">
+        <div class="nav-heading"><span>Overview</span></div>
+        <a href="{{ route('admin.dashboard') }}" title="Dashboard" @class(['active' => request()->routeIs('admin.dashboard')])>
+            <i class="fa-solid fa-gauge-high"></i><span>Dashboard</span>
+        </a>
+        <a href="{{ route('admin.enquiries.index') }}" title="Enquiries" @class(['active' => request()->routeIs('admin.enquiries.*')])>
+            <i class="fa-solid fa-inbox"></i><span>Enquiries</span>
+            @if ($newEnquiryCount)<span class="nav-badge">{{ $newEnquiryCount }}</span>@endif
+        </a>
+
+        <div class="nav-heading"><span>Website Pages</span></div>
+        @foreach ($menu['pages'] as $group)
+            @include('admin.partials.nav-group', ['group' => $group])
         @endforeach
+
+        <div class="nav-heading"><span>Configuration</span></div>
+        @include('admin.partials.nav-group', ['group' => $menu['settings']])
     </nav>
 
     <div class="sidebar-footer">
@@ -122,6 +123,18 @@
         var collapsed = b.classList.toggle('sidebar-collapsed');
         try { localStorage.setItem('wps-sidebar', collapsed ? 'collapsed' : 'expanded'); } catch (e) {}
     });
+    // Sidebar groups: expand / collapse sub-menus (in icon-only mode the link opens the first section).
+    document.querySelectorAll('[data-nav-group] > .nav-group-toggle').forEach(function (toggle) {
+        toggle.addEventListener('click', function (e) {
+            if (document.body.classList.contains('sidebar-collapsed') && window.innerWidth >= 992) return;
+            e.preventDefault();
+            var group = toggle.parentNode;
+            var open = !group.classList.contains('open');
+            group.classList.toggle('open', open);
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    });
+    (function () { var a = document.querySelector('.sidebar-nav .nav-sub a.active, .sidebar-nav > a.active'); if (a) a.scrollIntoView({ block: 'center' }); })();
     // Styled confirmation dialog for forms with data-confirm (delete, logout)
     (function () {
         var el = document.getElementById('confirmModal');

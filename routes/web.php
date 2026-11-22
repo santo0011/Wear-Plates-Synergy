@@ -16,6 +16,12 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about-us', [PageController::class, 'about'])->name('about');
 Route::get('/why-choose-us', [PageController::class, 'why'])->name('why');
 Route::get('/our-presence', [PageController::class, 'presence'])->name('presence');
+Route::get('/leadership', [PageController::class, 'leadership'])->name('leadership');
+Route::get('/industries', [PageController::class, 'industries'])->name('industries');
+Route::get('/infrastructure', [PageController::class, 'infrastructure'])->name('infrastructure');
+Route::get('/quality', [PageController::class, 'quality'])->name('quality');
+Route::get('/projects', [PageController::class, 'projects'])->name('projects');
+Route::get('/technical-resources', [PageController::class, 'resources'])->name('resources');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{category}', [ProductController::class, 'category'])->name('products.category');
@@ -62,6 +68,9 @@ Route::prefix('admin')->name('admin.')->middleware('admin.nocache')->group(funct
         Route::get('enquiries/{enquiry}', [Admin\EnquiryController::class, 'show'])->name('enquiries.show');
         Route::patch('enquiries/{enquiry}', [Admin\EnquiryController::class, 'update'])->name('enquiries.update');
         Route::delete('enquiries/{enquiry}', [Admin\EnquiryController::class, 'destroy'])->name('enquiries.destroy');
+
+        Route::get('content/{page}/{section}', [Admin\ContentController::class, 'edit'])->name('content.edit');
+        Route::put('content/{page}/{section}', [Admin\ContentController::class, 'update'])->name('content.update');
 
         Route::get('settings/{group?}', [Admin\SettingController::class, 'edit'])->name('settings.edit');
         Route::put('settings/{group}', [Admin\SettingController::class, 'update'])->name('settings.update');

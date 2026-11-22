@@ -13,7 +13,8 @@ class Product extends Model
     use HasSlugAndImage;
 
     protected $fillable = [
-        'product_category_id', 'name', 'slug', 'short_description', 'description', 'image',
+        'product_category_id', 'name', 'subtitle', 'slug', 'short_description', 'description', 'image',
+        'highlights', 'specifications', 'data_table', 'data_table_title', 'applications',
         'sort_order', 'is_active', 'is_featured', 'meta_title', 'meta_description',
     ];
 

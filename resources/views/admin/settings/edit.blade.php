@@ -45,7 +45,7 @@
                                 <x-admin.textarea :name="$field" :label="$s->label" :value="$s->value" :help="$s->help" rows="8" class="font-monospace small" />
                                 @break
                             @case('image')
-                                <x-admin.image :name="$field" :label="$s->label" :current="$s->value" :remove-name="'remove['.$s->key.']'" :help="$s->help ?: 'JPG, PNG or WebP. Max 3 MB.'" />
+                                <x-admin.image :name="$field" :label="$s->label" :current="$s->value" :remove-name="'remove['.$s->key.']'" :help="$s->help ?: 'JPG, PNG or WebP. Max 6 MB.'" />
                                 @break
                             @case('boolean')
                                 <x-admin.switch :name="$field" :label="$s->label" :checked="(bool) $s->value" :help="$s->help" />
