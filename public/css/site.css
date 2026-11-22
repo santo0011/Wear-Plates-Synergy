@@ -348,6 +348,29 @@ main#main { overflow-x: clip; }
 .tick-list li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 0; top: .05rem; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: var(--brand-50); color: var(--brand); font-size: .62rem; display: grid; place-items: center; }
 .bg-dark-steel .tick-list li, .ve-band .tick-list li { color: rgba(255, 255, 255, .85); }
 
+/* Home About: tighter image collage and evenly aligned proof points. */
+.home-about .about-collage { width: 100%; padding: 0 13% 10% 0; }
+.home-about .about-main { aspect-ratio: 1.22; }
+.home-about .about-sub { width: 42%; aspect-ratio: 1.08; border-width: 6px; }
+.home-about .about-badge { top: 1.5rem; padding: .75rem 1rem; }
+.home-about .about-badge strong { font-size: 1.9rem; }
+.home-about .sec-title { max-width: 19ch; font-size: clamp(1.9rem, 3vw, 2.45rem); line-height: 1.1; margin-bottom: .85rem; }
+.home-about .prose { max-width: 66ch; font-size: .96rem; line-height: 1.6; }
+.home-about .prose p { margin-bottom: .8rem; }
+.home-about .tick-list.two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: .65rem; }
+.home-about .tick-list li { padding: .8rem .8rem .8rem 2.35rem; border: 1px solid var(--line); border-radius: 12px; background: #fff; font-size: .9rem; line-height: 1.4; }
+.home-about .tick-list li::before { left: .75rem; top: .85rem; }
+.home-about .about-actions { gap: .75rem !important; margin-top: 1.1rem !important; }
+@media (max-width: 991.98px) {
+  .home-about .about-collage { max-width: 620px; margin-inline: auto; }
+  .home-about .sec-title { max-width: none; }
+}
+@media (max-width: 575.98px) {
+  .home-about .about-collage { padding-right: 10%; padding-bottom: 8%; }
+  .home-about .about-main { aspect-ratio: 1.12; }
+  .home-about .tick-list.two-col { grid-template-columns: 1fr; grid-auto-rows: auto; }
+}
+
 /* ---------- Stats band ---------- */
 .stats-band { padding: 96px 0; background: radial-gradient(900px 400px at 50% 0%, rgba(138, 28, 43, .35), transparent 70%), linear-gradient(170deg, var(--steel-900), var(--steel-950)); color: #fff; position: relative; overflow: hidden; }
 .stats-band::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, rgba(255, 255, 255, .03) 0 1px, transparent 1px 90px); }

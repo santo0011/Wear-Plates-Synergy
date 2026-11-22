@@ -92,9 +92,9 @@
 
 {{-- ================= ABOUT ================= --}}
 @if ($about->active())
-<section class="section" id="sec-about">
+<section class="section home-about" id="sec-about">
     <div class="container-wide">
-        <div class="row align-items-center g-5 g-xl-6">
+        <div class="row align-items-center g-4 g-xl-5">
             <div class="col-lg-6 reveal reveal-left">
                 <div class="about-collage">
                     <x-media :src="$about->image" :alt="plain_text($about->heading)" icon="fa-solid fa-industry" class="about-main" />
@@ -112,7 +112,7 @@
                         @foreach ($about->lines('points') as $point)<li>{{ $point }}</li>@endforeach
                     </ul>
                 @endif
-                <div class="d-flex flex-wrap gap-3 mt-4">
+                <div class="d-flex flex-wrap gap-3 mt-4 about-actions">
                     <a href="{{ route('about') }}" class="btn btn-brand">{{ $about->get('button_text', 'More About Us') }}<i class="fa-solid fa-arrow-right ms-2"></i></a>
                     <a href="{{ route('leadership') }}" class="btn btn-link-arrow">Meet our leadership <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
