@@ -27,8 +27,10 @@
     <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6500" data-bs-pause="hover">
         <div class="carousel-inner">
             @foreach ($slides as $i => $slide)
-                <div @class(['carousel-item', 'active' => $i === 0])>
-                    <div @class(['hero-bg', 'has-image' => ! empty($slide['image'])]) @if (! empty($slide['image'])) style="background-image:url('{{ asset($slide['image']) }}')" @endif aria-hidden="true"></div>
+                <div @class(['carousel-item', 'active' => $i === 0, 'has-photo' => ! empty($slide['image'])])>
+                    <div class="hero-photo" aria-hidden="true">
+                        <div @class(['hero-bg', 'has-image' => ! empty($slide['image'])]) @if (! empty($slide['image'])) style="background-image:url('{{ asset($slide['image']) }}')" @endif></div>
+                    </div>
                     <div class="hero-shade" aria-hidden="true"></div>
                     <div class="hero-slant" aria-hidden="true"></div>
                     <div class="hero-line" aria-hidden="true"></div>
