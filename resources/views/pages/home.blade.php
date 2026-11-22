@@ -110,17 +110,24 @@
             </div>
             @if ($about->lines('points'))
                 <div class="col-12 home-about-points reveal">
-                    <ul class="tick-list two-col">
-                        @foreach ($about->lines('points') as $point)<li>{{ $point }}</li>@endforeach
-                    </ul>
+                    <div class="tick-list two-col home-about-point-grid" role="list">
+                        @foreach ($about->lines('points') as $point)
+                            <div class="home-about-point" role="listitem">{{ $point }}</div>
+                        @endforeach
+                        <div class="d-flex flex-wrap align-items-center gap-3 about-actions">
+                            <a href="{{ route('about') }}" class="btn btn-brand">{{ $about->get('button_text', 'More About Us') }}<i class="fa-solid fa-arrow-right ms-2"></i></a>
+                            <a href="{{ route('leadership') }}" class="btn btn-link-arrow">Meet our leadership <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            @else
+                <div class="col-12 reveal">
+                    <div class="d-flex flex-wrap gap-3 about-actions">
+                        <a href="{{ route('about') }}" class="btn btn-brand">{{ $about->get('button_text', 'More About Us') }}<i class="fa-solid fa-arrow-right ms-2"></i></a>
+                        <a href="{{ route('leadership') }}" class="btn btn-link-arrow">Meet our leadership <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
                 </div>
             @endif
-            <div class="col-12 reveal">
-                <div class="d-flex flex-wrap gap-3 about-actions">
-                    <a href="{{ route('about') }}" class="btn btn-brand">{{ $about->get('button_text', 'More About Us') }}<i class="fa-solid fa-arrow-right ms-2"></i></a>
-                    <a href="{{ route('leadership') }}" class="btn btn-link-arrow">Meet our leadership <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
         </div>
     </div>
 </section>
