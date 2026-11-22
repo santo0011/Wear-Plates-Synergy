@@ -15,18 +15,42 @@
 <x-page-hero :section="$hero" :crumbs="['Company' => route('about')]" />
 
 @if ($reasons->active() && $reasons->items('items'))
-<section class="section" id="sec-reasons">
+@php
+    $certLogos = array_filter([
+        setting('iso_certified') ? [setting('iso_logo'), setting('iso_label', 'ISO 9001:2015').' Certified'] : null,
+        setting('make_in_india') ? [setting('make_in_india_logo'), 'Make in India'] : null,
+        setting('msme_registered') ? [setting('msme_logo'), 'MSME Registered'] : null,
+    ], fn ($c) => $c && $c[0]);
+@endphp
+<section class="section why-section" id="sec-reasons">
     <div class="container-wide">
-        <x-section-heading :eyebrow="$reasons->eyebrow" :heading="$reasons->heading" :text="$reasons->text" :center="true" class="mb-5" />
-        <div class="reason-grid">
-            @foreach ($reasons->items('items') as $r)
-                <div class="reason-card reveal" data-delay="{{ $loop->index % 4 }}">
-                    <span class="reason-num">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
-                    <span class="feature-ico"><i class="{{ $r['icon'] ?? 'fa-solid fa-check' }}" aria-hidden="true"></i></span>
-                    <h3>{{ $r['title'] ?? '' }}</h3>
-                    <p>{{ $r['text'] ?? '' }}</p>
+        <div class="why-split">
+            <aside class="why-intro reveal reveal-left">
+                <x-section-heading :eyebrow="$reasons->eyebrow" :heading="$reasons->heading" :text="$reasons->text" :light="true" class="mb-0" />
+                @if ($certLogos)
+                    <div class="why-certs" aria-label="Certifications">
+                        @foreach ($certLogos as [$logo, $label])
+                            <span class="why-cert"><img src="{{ asset($logo) }}" alt="{{ $label }}" title="{{ $label }}" loading="lazy"></span>
+                        @endforeach
+                    </div>
+                @endif
+                <div class="why-actions">
+                    <a href="{{ route('contact') }}#enquiry" class="btn btn-brand">Get a Quote<i class="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i></a>
+                    <a href="{{ route('products.index') }}" class="btn btn-link-arrow">Our Products <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
-            @endforeach
+            </aside>
+            <div class="why-tiles">
+                @foreach ($reasons->items('items') as $r)
+                    <article class="why-tile reveal" data-delay="{{ $loop->index % 2 }}">
+                        <span class="why-tile-ico"><i class="{{ $r['icon'] ?? 'fa-solid fa-check' }}" aria-hidden="true"></i></span>
+                        <div class="why-tile-body">
+                            <span class="why-tile-num">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                            <h3>{{ $r['title'] ?? '' }}</h3>
+                            @if (! empty($r['text']))<p>{{ $r['text'] }}</p>@endif
+                        </div>
+                    </article>
+                @endforeach
+            </div>
         </div>
     </div>
 </section>
@@ -58,17 +82,35 @@
 @endif
 
 @if ($promise->active())
-<section class="section" id="sec-promise">
+@php
+    // "Stock: Ready ..." -> label "Stock" + text. The icon follows the label.
+    $promiseIcons = ['stock' => 'fa-solid fa-boxes-stacked', 'delivery' => 'fa-solid fa-truck-fast', 'dispatch' => 'fa-solid fa-dolly'];
+    $promisePoints = array_map(function ($p) use ($promiseIcons) {
+        [$label, $text] = preg_match('/^([A-Za-z ]{3,20}):\s*(.+)$/u', $p, $m) ? [trim($m[1]), $m[2]] : [null, $p];
+        return [$label, $text, $promiseIcons[strtolower((string) $label)] ?? 'fa-solid fa-bolt'];
+    }, $promise->lines('points'));
+@endphp
+<section class="section bg-soft" id="sec-promise">
     <div class="container-wide">
         <div class="row g-5 align-items-center">
-            <div class="col-lg-6 reveal reveal-left">
-                <x-section-heading :eyebrow="$promise->eyebrow" :heading="$promise->heading" :text="$promise->text" />
-                <ul class="promise-list">
-                    @foreach ($promise->lines('points') as $p)<li><i class="fa-solid fa-circle-check"></i>{{ $p }}</li>@endforeach
-                </ul>
+            <div class="col-lg-5 reveal reveal-left">
+                <div class="promise-media">
+                    <x-media :src="$promise->image" alt="Dispatch from our plant" icon="fa-solid fa-truck-fast" class="ratio-4x5 rounded-media" />
+                </div>
             </div>
-            <div class="col-lg-6 reveal reveal-right">
-                <x-media :src="$promise->image" alt="Dispatch from our plant" icon="fa-solid fa-truck-fast" class="ratio-4x3 rounded-media" />
+            <div class="col-lg-7">
+                <x-section-heading :eyebrow="$promise->eyebrow" :heading="$promise->heading" :text="$promise->text" class="reveal" />
+                <ol class="promise-steps">
+                    @foreach ($promisePoints as [$label, $text, $icon])
+                        <li class="reveal" data-delay="{{ $loop->index % 4 }}">
+                            <span class="promise-ico"><i class="{{ $icon }}" aria-hidden="true"></i></span>
+                            <div>
+                                @if ($label)<span class="promise-label">{{ $label }}</span>@endif
+                                <p>{{ $text }}</p>
+                            </div>
+                        </li>
+                    @endforeach
+                </ol>
             </div>
         </div>
     </div>

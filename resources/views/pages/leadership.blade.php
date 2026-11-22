@@ -15,55 +15,54 @@
 @section('content')
 <x-page-hero :section="$hero" :crumbs="['Company' => route('about')]" />
 
-{{-- ================= MD MESSAGE ================= --}}
-@if ($md->active())
-<section class="section" id="sec-md_message">
-    <div class="container-wide">
-        <div class="md-card reveal">
-            <div class="md-photo">
-                <x-media :src="$md->photo" :alt="$md->name" icon="fa-solid fa-user-tie" class="ratio-4x5" />
-                <div class="md-name">
-                    <strong>{{ $md->name }}</strong>
-                    <span>{{ $md->designation }}</span>
-                </div>
-            </div>
-            <div class="md-text">
-                <x-section-heading :eyebrow="$md->eyebrow" :heading="$md->heading" />
-                <i class="fa-solid fa-quote-left md-quote-mark" aria-hidden="true"></i>
-                <div class="prose">{{ rich_text($md->message) }}</div>
-                @if ($md->quote)<p class="md-sign">“{{ $md->quote }}”</p>@endif
-                <a href="#sec-leaders" class="btn btn-link-arrow mt-2">Meet our leadership team <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </div>
-</section>
-@endif
-
-{{-- ================= LEADERS ================= --}}
+{{-- ================= INTRO ================= --}}
 @if ($intro->active())
-<section class="section-sm bg-soft" id="sec-intro">
+<section class="section-sm" id="sec-intro">
     <div class="container-wide">
         <x-section-heading :eyebrow="$intro->eyebrow" :heading="$intro->heading" :text="$intro->text" :center="true" class="mb-0" />
     </div>
 </section>
 @endif
 
-@if ($leaders->active())
-<section @class(['section bg-soft', 'pt-0' => $intro->active()]) id="sec-leaders">
+{{-- ================= LEADERS (MD message first, then leader profiles – one pattern) ================= --}}
+@php
+    $people = [];
+    if ($md->active() && $md->name) {
+        $people[] = [
+            'id' => 'sec-md_message',
+            'photo' => $md->photo,
+            'name' => $md->name,
+            'designation' => $md->designation,
+            'location' => null,
+            'title' => plain_text($md->heading),
+            'summary' => $md->message,
+            'highlights' => '',
+            'quote' => $md->quote,
+        ];
+    }
+    if ($leaders->active()) {
+        foreach ($leaders->items('leaders') as $leader) {
+            $people[] = $leader + ['id' => null, 'title' => null];
+        }
+    }
+@endphp
+@if ($people)
+<section @class(['section', 'pt-0' => $intro->active()]) id="sec-leaders">
     <div class="container-wide">
-        @foreach ($leaders->items('leaders') as $leader)
-            <article @class(['leader-profile reveal', 'is-reverse' => $loop->even])>
+        @foreach ($people as $person)
+            <article @class(['leader-profile reveal', 'is-reverse' => $loop->even]) @if ($person['id']) id="{{ $person['id'] }}" @endif>
                 <div class="leader-photo">
-                    <x-media :src="$leader['photo'] ?? null" :alt="$leader['name'] ?? ''" icon="fa-solid fa-user-tie" class="ratio-4x5" />
-                    @if (! empty($leader['quote']))
-                        <blockquote class="leader-quote"><i class="fa-solid fa-quote-left"></i>{{ $leader['quote'] }}</blockquote>
+                    <x-media :src="$person['photo'] ?? null" :alt="$person['name'] ?? ''" icon="fa-solid fa-user-tie" class="ratio-4x5" />
+                    @if (! empty($person['quote']))
+                        <blockquote class="leader-quote"><i class="fa-solid fa-quote-left"></i>{{ $person['quote'] }}</blockquote>
                     @endif
                 </div>
                 <div class="leader-body">
-                    <span class="eyebrow">{{ $leader['designation'] ?? '' }}@if (! empty($leader['location'])) · {{ $leader['location'] }}@endif</span>
-                    <h2 class="leader-name">{{ $leader['name'] ?? '' }}</h2>
-                    <div class="prose">{{ rich_text($leader['summary'] ?? '') }}</div>
-                    @if ($hl = cms_lines($leader['highlights'] ?? ''))
+                    <span class="eyebrow">{{ $person['designation'] ?? '' }}@if (! empty($person['location'])) · {{ $person['location'] }}@endif</span>
+                    <h2 class="leader-name">{{ $person['name'] ?? '' }}</h2>
+                    @if (! empty($person['title']))<h3 class="sub-title-sm">{{ $person['title'] }}</h3>@endif
+                    <div class="prose">{{ rich_text($person['summary'] ?? '') }}</div>
+                    @if ($hl = cms_lines($person['highlights'] ?? ''))
                         <h3 class="sub-title-sm">Profile</h3>
                         <ul class="highlight-list">
                             @foreach ($hl as $h)<li>{{ $h }}</li>@endforeach
@@ -77,7 +76,7 @@
 @endif
 
 @if ($team->active() && $team->items('members'))
-<section class="section" id="sec-team">
+<section class="section bg-soft" id="sec-team">
     <div class="container-wide">
         <x-section-heading :eyebrow="$team->eyebrow" :heading="$team->heading" :text="$team->text" :center="true" class="mb-5" />
         <div class="row g-4">
