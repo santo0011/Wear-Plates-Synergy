@@ -17,6 +17,13 @@ use Illuminate\Support\Facades\Cache;
  */
 class ContentSeeder extends Seeder
 {
+    /** Home hero: three short slides (eyebrow, title, text, image, button text, button link). */
+    public const HERO_SLIDES = [
+        ['Since 2008 | ISO Certified | MSME Registered', 'The Leader In Wear Protection & **Maintenance Welding Technology**', null, null, 'Our Products & Solutions', '/products'],
+        ['Expertise to Lead, Lead to The Bench Marking', 'Leading Through Designing **New Products & Development**', 'Comprehensive welding cladding and rebuilding services to the core sector industries.', null, 'Company Profile', '/about-us'],
+        ['"Valued Engineering" VE', 'The right material at **the right place**', 'Higher LPF i.e. life prolonging factor and that brings out the R.O.I.', null, 'Why Choose Us', '/why-choose-us'],
+    ];
+
     public function run(): void
     {
         $overwrite = (bool) env('CMS_SEED_OVERWRITE', false);
@@ -142,12 +149,7 @@ class ContentSeeder extends Seeder
     {
         return [
             'hero' => [
-                'slides' => $this->rows(['eyebrow', 'title', 'text', 'image', 'button_text', 'button_link'], [
-                    ['Since 2008 | ISO Certified | MSME Registered', 'WEAR PLATES SYNERGY **VE INDIA**', self::ABOUT_US, null, 'Our Products & Solutions', '/products'],
-                    ['Expertise to Lead, Lead to The Bench Marking', 'The Leader in Wear Protection Materials, Leading Through Designing **New Products & Development**', 'Wear Plates Synergy VE India (WPSVEI) have taken organic leap to offer comprehensive welding cladding and rebuilding services to the core sector industries.', null, 'Company Profile', '/about-us'],
-                    ['"Valued Engineering" VE', 'The right material at **the right place**', 'VE is nothing but a concept by using the right material at the right place which will finally lead to higher LPF i.e. life prolonging factor and that brings out the R.O.I.', null, 'Why Choose Us', '/why-choose-us'],
-                    ['Mission & Values Roadmap', 'FORGE WITH STRENGTH. **SERVE WITH SYNERGY.**', 'Building durable wear solutions with partnership, reliability, and integrity across India since 2008.', null, 'Iconic Jobs', '/projects'],
-                ]),
+                'slides' => $this->rows(['eyebrow', 'title', 'text', 'image', 'button_text', 'button_link'], self::HERO_SLIDES),
             ],
             'trust' => [
                 'items' => $this->rows(['icon', 'title', 'text'], [

@@ -30,8 +30,12 @@
                 <div @class(['carousel-item', 'active' => $i === 0])>
                     <div @class(['hero-bg', 'has-image' => ! empty($slide['image'])]) @if (! empty($slide['image'])) style="background-image:url('{{ asset($slide['image']) }}')" @endif aria-hidden="true"></div>
                     <div class="hero-shade" aria-hidden="true"></div>
+                    <div class="hero-slant" aria-hidden="true"></div>
+                    <div class="hero-line" aria-hidden="true"></div>
                     @if (empty($slide['image']))
                         <div class="hero-mark" aria-hidden="true"><img src="{{ asset(setting('logo') ?: 'images/brand/logo.png') }}" alt=""></div>
+                    @else
+                        <div class="hero-index" aria-hidden="true">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}</div>
                     @endif
                     <div class="container-wide hero-content">
                         <div class="hero-copy">
