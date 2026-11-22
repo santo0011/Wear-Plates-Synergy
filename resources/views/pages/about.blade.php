@@ -5,7 +5,6 @@
     $profile = cms('about.profile');
     $assoc = cms('about.association');
     $values = cms('about.values');
-    $md = cms('about.md_message');
     $timeline = cms('about.timeline');
     $group = cms('about.group');
 @endphp
@@ -91,30 +90,6 @@
                     <p>{{ $v['text'] ?? '' }}</p>
                 </div>
             @endforeach
-        </div>
-    </div>
-</section>
-@endif
-
-{{-- ================= MD MESSAGE ================= --}}
-@if ($md->active())
-<section class="section" id="sec-md_message">
-    <div class="container-wide">
-        <div class="md-card reveal">
-            <div class="md-photo">
-                <x-media :src="$md->photo" :alt="$md->name" icon="fa-solid fa-user-tie" class="ratio-4x5" />
-                <div class="md-name">
-                    <strong>{{ $md->name }}</strong>
-                    <span>{{ $md->designation }}</span>
-                </div>
-            </div>
-            <div class="md-text">
-                <x-section-heading :eyebrow="$md->eyebrow" :heading="$md->heading" />
-                <i class="fa-solid fa-quote-left md-quote-mark" aria-hidden="true"></i>
-                <div class="prose">{{ rich_text($md->message) }}</div>
-                @if ($md->quote)<p class="md-sign">“{{ $md->quote }}”</p>@endif
-                <a href="{{ route('leadership') }}" class="btn btn-link-arrow mt-2">Meet our leadership team <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
         </div>
     </div>
 </section>

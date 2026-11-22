@@ -281,15 +281,6 @@ class ContentSeeder extends Seeder
                 ]),
                 'image' => null,
             ],
-            'md_message' => [
-                'eyebrow' => "From the Managing Director's Desk",
-                'heading' => 'Message from the **Managing Director**',
-                'name' => 'D. Deepti',
-                'designation' => 'Managing Director',
-                'photo' => null,
-                'message' => "I am privileged to be part of a talented team enriched with high engineering skill and expertise. Our organization's vision and mission define our purpose and the path we strive to accomplish. As a team, we are committed to delivering excellence in all our key result areas, empowering us to undertake more challenging assignments today and in the years to come.\n\nI extend my best wishes to each one of you — our valued stakeholders — for great success and growth together.\n\n\"We are committed to delivering premium wear protection solutions with reliability, innovation, and service excellence. Our focus is on quality, durability,",
-                'quote' => 'The expertise to lead, Lead to the bench marking. The leader in Wear Protection.',
-            ],
             'timeline' => [
                 'eyebrow' => 'Our Journey',
                 'heading' => 'Serving India **Since 2008**',
@@ -331,6 +322,15 @@ class ContentSeeder extends Seeder
                 'eyebrow' => 'Leadership',
                 'heading' => 'Highly Experienced **Management**',
                 'text' => 'Highly experienced management and supervisory team with more the 25 year of experience with L&T Welding Products Business, Reliance Industries and Welding Alloys UK in job execution',
+            ],
+            'md_message' => [
+                'eyebrow' => "From the Managing Director's Desk",
+                'heading' => 'Message from the **Managing Director**',
+                'name' => 'D. Deepti',
+                'designation' => 'Managing Director',
+                'photo' => null,
+                'message' => "I am privileged to be part of a talented team enriched with high engineering skill and expertise. Our organization's vision and mission define our purpose and the path we strive to accomplish. As a team, we are committed to delivering excellence in all our key result areas, empowering us to undertake more challenging assignments today and in the years to come.\n\nI extend my best wishes to each one of you — our valued stakeholders — for great success and growth together.\n\n\"We are committed to delivering premium wear protection solutions with reliability, innovation, and service excellence. Our focus is on quality, durability,",
+                'quote' => 'The expertise to lead, Lead to the bench marking. The leader in Wear Protection.',
             ],
             'leaders' => [
                 'leaders' => [

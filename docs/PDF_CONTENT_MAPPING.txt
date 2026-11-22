@@ -40,7 +40,7 @@ PDF PAGE 03 – One-page brochure (About / Products / Why / MD desk / Presence /
   Text   : About us paragraph   → /  » Who We Are       (Home Page » About Introduction)
            Products & solutions → /products categories   (Products » Categories)
            Why choose us (6)    → /why-choose-us » Reasons 1–6   (Why Choose Us » Reasons)
-           MD's desk quote      → /about-us » MD's Message      (About Us » MD's Message)
+           MD's desk quote      → /leadership » MD's Message      (Leadership » MD's Message)
            Presence list        → /our-presence                 (Our Presence » Offices & Locations)
            Blue Dart | DHL      → delivery band                 (Website Settings » Delivery & Logistics)
            GST, mobile          → header / footer / contact     (Website Settings » Contact Details)
@@ -194,8 +194,8 @@ PDF PAGE 22 – Project 2026: 6 kW fiber laser, strategic alliance, Growth Bridg
   IMAGE  : none (design graphic). Optional: photo of the new fiber laser → Infrastructure » Capacity Expansion » Photo.
 
 PDF PAGE 23 – Message from the Managing Director – D. Deepti
-  Text   : → /about-us » MD's Message   Admin: About Us » MD's Message
-  IMAGE  : Portrait → About Us » MD's Message » "Photo"  (crop portrait 4:5, approx. 600×750 px)
+  Text   : → /leadership » MD's Message   Admin: Leadership » MD's Message
+  IMAGE  : Portrait → Leadership » MD's Message » "Photo"  (crop portrait 4:5, approx. 600×750 px)
 
 PDF PAGE 24 – MD profile – Pyaare Lal (P L) Mangal
   Text   : → /leadership » profile 1   Admin: Leadership » Leader Profiles » item 1
@@ -371,13 +371,13 @@ ABOUT US
   Company Profile » Second Photo ............... ✔ p08 / p51
   Associations » logo per partner (optional) ... ✚ Metal Form / Kladex / Synergy logos
   Mission & Values » Compass (optional) ........ ✔ p21
-  MD's Message » Photo ......................... ✔ p23 (D. Deepti)
   Synergy Group » Infrastructure Photo ......... ✔ p28
   Synergy Group » Workshop Photo ............... ✔ p28
   Synergy Group » 13 product photos ............ ✔ p27
 
 LEADERSHIP
   Page Banner .................................. ✚
+  MD's Message » Photo ......................... ✔ p23 (D. Deepti)
   Leader Profiles » P L Mangal » Photo ......... ✔ p24
   Leader Profiles » Prasanta Dhar » Photo ...... ✔ p25
   Management Team » 9 photos (optional) ........ ✚ (initials are shown until uploaded)

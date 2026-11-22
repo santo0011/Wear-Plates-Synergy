@@ -2,6 +2,7 @@
 
 @php
     $hero = cms('leadership.hero');
+    $md = cms('leadership.md_message');
     $intro = cms('leadership.intro');
     $leaders = cms('leadership.leaders');
     $team = cms('leadership.team');
@@ -14,8 +15,33 @@
 @section('content')
 <x-page-hero :section="$hero" :crumbs="['Company' => route('about')]" />
 
+{{-- ================= MD MESSAGE ================= --}}
+@if ($md->active())
+<section class="section" id="sec-md_message">
+    <div class="container-wide">
+        <div class="md-card reveal">
+            <div class="md-photo">
+                <x-media :src="$md->photo" :alt="$md->name" icon="fa-solid fa-user-tie" class="ratio-4x5" />
+                <div class="md-name">
+                    <strong>{{ $md->name }}</strong>
+                    <span>{{ $md->designation }}</span>
+                </div>
+            </div>
+            <div class="md-text">
+                <x-section-heading :eyebrow="$md->eyebrow" :heading="$md->heading" />
+                <i class="fa-solid fa-quote-left md-quote-mark" aria-hidden="true"></i>
+                <div class="prose">{{ rich_text($md->message) }}</div>
+                @if ($md->quote)<p class="md-sign">“{{ $md->quote }}”</p>@endif
+                <a href="#sec-leaders" class="btn btn-link-arrow mt-2">Meet our leadership team <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
+
+{{-- ================= LEADERS ================= --}}
 @if ($intro->active())
-<section class="section-sm" id="sec-intro">
+<section class="section-sm bg-soft" id="sec-intro">
     <div class="container-wide">
         <x-section-heading :eyebrow="$intro->eyebrow" :heading="$intro->heading" :text="$intro->text" :center="true" class="mb-0" />
     </div>
@@ -23,7 +49,7 @@
 @endif
 
 @if ($leaders->active())
-<section class="section pt-0" id="sec-leaders">
+<section @class(['section bg-soft', 'pt-0' => $intro->active()]) id="sec-leaders">
     <div class="container-wide">
         @foreach ($leaders->items('leaders') as $leader)
             <article @class(['leader-profile reveal', 'is-reverse' => $loop->even])>
@@ -51,7 +77,7 @@
 @endif
 
 @if ($team->active() && $team->items('members'))
-<section class="section bg-soft" id="sec-team">
+<section class="section" id="sec-team">
     <div class="container-wide">
         <x-section-heading :eyebrow="$team->eyebrow" :heading="$team->heading" :text="$team->text" :center="true" class="mb-5" />
         <div class="row g-4">

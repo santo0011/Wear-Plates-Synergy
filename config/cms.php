@@ -206,17 +206,6 @@ return [
                         'image' => ['image', 'Compass Image', 'Optional. A default compass graphic is drawn when empty.'],
                     ],
                 ],
-                'md_message' => [
-                    'label' => "MD's Message",
-                    'icon' => 'fa-solid fa-quote-left',
-                    'fields' => $heading + [
-                        'name' => ['text', 'Name'],
-                        'designation' => ['text', 'Designation'],
-                        'photo' => ['image', 'Photo', 'Portrait photo, about 600 × 750 px.'],
-                        'message' => ['textarea', 'Message', 'Blank line = new paragraph.'],
-                        'quote' => ['text', 'Highlighted Quote'],
-                    ],
-                ],
                 'timeline' => [
                     'label' => 'Milestones',
                     'icon' => 'fa-solid fa-timeline',
@@ -253,6 +242,17 @@ return [
             'route' => 'leadership',
             'sections' => [
                 'hero' => ['label' => 'Page Banner', 'icon' => 'fa-solid fa-panorama', 'fields' => $hero],
+                'md_message' => [
+                    'label' => "MD's Message",
+                    'icon' => 'fa-solid fa-quote-left',
+                    'fields' => $heading + [
+                        'name' => ['text', 'Name'],
+                        'designation' => ['text', 'Designation'],
+                        'photo' => ['image', 'Photo', 'Portrait photo, about 600 × 750 px.'],
+                        'message' => ['textarea', 'Message', 'Blank line = new paragraph.'],
+                        'quote' => ['text', 'Highlighted Quote'],
+                    ],
+                ],
                 'intro' => [
                     'label' => 'Introduction',
                     'icon' => 'fa-solid fa-align-left',

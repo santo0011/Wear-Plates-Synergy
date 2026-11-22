@@ -144,7 +144,7 @@ class ContentEditorTest extends TestCase
     {
         $this->actingAs($this->admin, 'admin');
 
-        $this->put(route('admin.content.update', ['about', 'md_message']), [
+        $this->put(route('admin.content.update', ['leadership', 'md_message']), [
             'is_active' => 1, 'content' => ['name' => 'D. Deepti', 'photo' => UploadedFile::fake()->create('cv.pdf', 20, 'application/pdf')],
         ])
             ->assertSessionHasErrors('content.photo');
