@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-label="Illustration of cast alloy gears">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2c070e"/><stop offset="1" stop-color="#7a1a2c"/></linearGradient>
+    <radialGradient id="steel" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#d5d9df"/><stop offset=".6" stop-color="#8a919c"/><stop offset="1" stop-color="#4a5058"/></radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0c75e"/><stop offset="1" stop-color="#9c6f12"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#fff" stroke-opacity=".05"/></pattern>
+  </defs>
+  <rect width="800" height="560" fill="url(#bg)"/>
+  <rect width="800" height="560" fill="url(#grid)"/>
+  <g stroke="#1b1d21" stroke-width="2" stroke-linejoin="round">
+    <path fill="url(#steel)" d="M480 290L505.2 307.3L502.6 324.3L473.5 333.5L468.6 347.4L485.2 373L476.3 387.8L446 385.2L436.1 396.1L441.7 426L427.8 436.3L400.7 422.3L387.4 428.6L381.1 458.4L364.3 462.6L344.7 439.3L330 440L312.7 465.2L295.7 462.6L286.5 433.5L272.6 428.6L247 445.2L232.2 436.3L234.8 406L223.9 396.1L194 401.7L183.7 387.8L197.7 360.7L191.4 347.4L161.6 341.1L157.4 324.3L180.7 304.7L180 290L154.8 272.7L157.4 255.7L186.5 246.5L191.4 232.6L174.8 207L183.7 192.2L214 194.8L223.9 183.9L218.3 154L232.2 143.7L259.3 157.7L272.6 151.4L278.9 121.6L295.7 117.4L315.3 140.7L330 140L347.3 114.8L364.3 117.4L373.5 146.5L387.4 151.4L413 134.8L427.8 143.7L425.2 174L436.1 183.9L466 178.3L476.3 192.2L462.3 219.3L468.6 232.6L498.4 238.9L502.6 255.7L479.3 275.3Z"/>
+    <circle cx="330" cy="290" r="95" fill="none" stroke="#1b1d21" stroke-opacity=".35" stroke-width="3"/>
+    <circle cx="330" cy="290" r="46" fill="#2a2d33"/>
+    <rect x="320" y="236" width="20" height="16" fill="#2a2d33"/>
+    <path fill="url(#gold)" d="M643 215L661.8 230.3L658.2 245.3L634.5 250.4L628.1 260.8L634.3 284.3L622.6 294.3L600.4 284.5L589.1 289.2L580.3 311.8L565 313L552.8 292L540.9 289.2L520.5 302.3L507.4 294.3L509.8 270.2L501.9 260.8L477.7 259.5L471.8 245.3L488 227.2L487 215L468.2 199.7L471.8 184.7L495.5 179.6L501.9 169.2L495.7 145.7L507.4 135.7L529.6 145.5L540.9 140.8L549.7 118.2L565 117L577.2 138L589.1 140.8L609.5 127.7L622.6 135.7L620.2 159.8L628.1 169.2L652.3 170.5L658.2 184.7L642 202.8Z"/>
+    <circle cx="565" cy="215" r="26" fill="#2a2d33"/>
+  </g>
+  <path d="M560 470H700" stroke="url(#gold)" stroke-width="4" stroke-linecap="round"/>
+</svg>
